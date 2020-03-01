@@ -12,6 +12,7 @@ app.engine('hbs', hbs({
   partialsDir: __dirname + '/views/partials'
 }));
 
+app.use(express.static(__dirname + '/public'));
 app.use('/', home);
 // app.get('/', (req, res)=> {
 //   res.send('test');
