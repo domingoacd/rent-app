@@ -3,10 +3,10 @@
   padding: 0;
   box-sizing: border-box; }
 
+html {
+  font-size: calc(1em + 1vw); }
+
 li {
   list-style: none; }
-
-body {
-  background-color: red; }
 
 /*# sourceMappingURL=main.css.map */
