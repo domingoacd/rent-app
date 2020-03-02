@@ -13,6 +13,7 @@ app.engine('hbs', hbs({
 }));
 
 app.use('/', home);
+app.use(express.static('public'));
 // app.get('/', (req, res)=> {
 //   res.send('test');
 // });

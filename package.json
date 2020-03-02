@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon"
+    "start": "nodemon",
+    "sass": "node-sass --source-map true ./src/sass/main.scss ./public/css/main.css -w"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "handlebars": "^4.7.3",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "node-sass": "^4.13.1"
   }
 }
