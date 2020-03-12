@@ -14,6 +14,7 @@ app.engine('hbs', hbs({
 
 app.use(express.static(__dirname + '/public'));
 app.use('/', home);
+app.use(express.static('public'));
 // app.get('/', (req, res)=> {
 //   res.send('test');
 // });
