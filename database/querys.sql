@@ -18,3 +18,10 @@ CREATE TABLE clients (
 );
 
 /* CREATE cars TABLE*/
+CREATE TABLE cars (
+    id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    year int(5) NOT NULL,
+    kilometers int(16) NOT NULL,
+    status varchar(10) NOT NULL,
+    CHECK(status == "rented" OR status == "available")  
+);
