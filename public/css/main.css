@@ -1,12 +1,44 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  color: #131515; }
 
 html {
   font-size: calc(1em + 1vw); }
 
+body {
+  background-color: #FFFAFB; }
+
 li {
   list-style: none; }
+
+h1 {
+  font-family: "Proza Libre", sans-serif; }
+
+.footer {
+  display: flex;
+  align-items: center;
+  padding: 0 2%;
+  width: 100vw;
+  height: 80px;
+  background-color: #131515; }
+  .footer .copyright-text {
+    color: #FFFAFB;
+    font-weight: 100; }
+
+.home {
+  display: flex;
+  width: 100vw;
+  height: calc(100vh - 80px); }
+  .home__left-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%; }
+  .home__right-side {
+    width: 50%;
+    background-color: #131515; }
 
 /*# sourceMappingURL=main.css.map */

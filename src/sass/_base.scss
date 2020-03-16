@@ -2,14 +2,24 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: $font-normal;
+  color: $second-color;
 }
 
 html { 
   font-size: calc(1em + 1vw); 
 }
 
+body {
+  background-color: $first-color;
+}
+
 li {
   list-style: none;
+}
+
+h1 {
+  font-family: $font-title;
 }
 
 

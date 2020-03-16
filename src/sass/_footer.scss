@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  align-items: center;
+  padding: 0 2%;
+  width: 100vw;
+  height: $footer-height;
+  background-color: $second-color;
+  .copyright-text {
+    color: $first-color;
+    font-weight: 100;
+  }
+}
