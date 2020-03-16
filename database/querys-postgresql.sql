@@ -27,10 +27,10 @@ CREATE TABLE cars (
 
 /* CREATE rents TABLE*/
 CREATE TABLE rents (
-  id SERIAL PRIMARY KEY,
-  car_id NOT NULL,
-  client_id NOT NULL,
-  user_rental_id NOT NULL,
-  rental_date NOT NULL,
-  return_date NOT NULL
+  rent_id SERIAL PRIMARY KEY,
+  car_id INT NOT NULL REFERENCES cars(id),
+  client_id INT NOT NULL REFERENCES clients(id),
+  user_rental_id INT NOT NULL REFERENCES users(id),
+  rental_date DATE NOT NULL,
+  return_date DATE NOT NULL
 );
