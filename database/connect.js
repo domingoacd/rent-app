@@ -6,4 +6,11 @@ const connection = mysql.createConnection({
   database: 'rent_app'
 });
 
+connection.connect((err) => {
+  if (err) {
+    console.error('Connection error', err)
+  } else {
+    console.log('DB Connection Successful!');
+  }
+});
 module.exports = connection;
