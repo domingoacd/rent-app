@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const hbs = require('express-handlebars');
 const home = require('./routes/index');
+const database = require('./database/connect');
+
 
 
 app.set('view engine', 'hbs');
