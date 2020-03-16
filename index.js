@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const hbs = require('express-handlebars');
 const home = require('./routes/index');
-const database = require('./database/connect');
 
 
 
@@ -13,6 +12,7 @@ app.engine('hbs', hbs({
   layoutsDir: __dirname + '/views/layouts',
   partialsDir: __dirname + '/views/partials'
 }));
+
 
 app.use(express.static(__dirname + '/public'));
 app.use('/', home);
