@@ -24,3 +24,13 @@ CREATE TABLE cars (
     kilometers INT NOT NULL,
     status VARCHAR (10) NOT NULL CHECK(status === 'rented' OR status === 'available')  
 );
+
+/* CREATE rents TABLE*/
+CREATE TABLE rents (
+  id SERIAL PRIMARY KEY,
+  car_id NOT NULL,
+  client_id NOT NULL,
+  user_rental_id NOT NULL,
+  rental_date NOT NULL,
+  return_date NOT NULL
+);
