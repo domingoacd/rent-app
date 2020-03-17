@@ -8,9 +8,34 @@
     justify-content: center;
     align-items: center;
     width: 50%;
+
+    .main-title {
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        width: 55%;
+        height: 100%;
+        background-color: $fifth-color;
+      }
+
+      span {
+        color: $first-color;
+      }
+    }
   }
   &__right-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50%;
     background-color: $second-color;
+
+    .btn {
+      margin: 0 1%;
+    }
   }
 }

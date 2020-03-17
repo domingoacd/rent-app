@@ -1,0 +1,26 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 1rem;
+  padding: 2%;
+  background-color: $second-color;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: transform 0.3s;
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:focus {
+    outline: none;
+  }
+  &--sign-up {
+    color: $second-color;
+    background-color: $fifth-color;
+  }
+  &--log-in {
+    color: $first-color;
+  }
+}
