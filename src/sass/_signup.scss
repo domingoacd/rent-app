@@ -1,5 +1,60 @@
 .signup {
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: calc(100vh - #{$footer-height});
+
+  .signup-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    min-width: 260px;
+    max-width: 460px;
+    height: 70%;
+    min-height: 270px;
+    max-height: 390px;
+    border-radius: 2px;
+    padding: 5%;
+    border: 1px solid #000;
+
+    .form-pair {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 30px;
+      
+      label {
+        font-size: 0.8rem;
+        margin-bottom: 5px;
+        color: $second-color;
+      }
+
+      input {
+        border: none;
+        padding: 1%;
+        width: 10rem;
+        height: 1rem;
+        font-size: 1rem;
+        border-bottom: 1px solid rgb(141, 141, 141);
+
+        &:focus {
+          outline: none;
+          border-bottom: 1px solid $third-color;
+        }
+      }
+
+    }
+
+    button[type="submit"] {
+      position: absolute;
+      bottom: -7%;
+      font-size: 0.7rem;
+      padding: 2%;
+      width: 40%;
+      color: $first-color;
+    }
+  }
 }

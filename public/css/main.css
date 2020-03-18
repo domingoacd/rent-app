@@ -52,8 +52,50 @@ h1 {
 
 .signup {
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: calc(100vh - 80px); }
+  .signup .signup-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    min-width: 260px;
+    max-width: 460px;
+    height: 70%;
+    min-height: 270px;
+    max-height: 390px;
+    border-radius: 2px;
+    padding: 5%;
+    border: 1px solid #000; }
+    .signup .signup-form .form-pair {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 30px; }
+      .signup .signup-form .form-pair label {
+        font-size: 0.8rem;
+        margin-bottom: 5px;
+        color: #131515; }
+      .signup .signup-form .form-pair input {
+        border: none;
+        padding: 1%;
+        width: 10rem;
+        height: 1rem;
+        font-size: 1rem;
+        border-bottom: 1px solid #8d8d8d; }
+        .signup .signup-form .form-pair input:focus {
+          outline: none;
+          border-bottom: 1px solid #7DE2D1; }
+    .signup .signup-form button[type="submit"] {
+      position: absolute;
+      bottom: -7%;
+      font-size: 0.7rem;
+      padding: 2%;
+      width: 40%;
+      color: #FFFAFB; }
 
 .home {
   display: flex;
