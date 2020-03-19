@@ -7,6 +7,10 @@ const home = require('./routes/index');
 
 app.set('view engine', 'hbs');
 
+//MIDDLEWARES
+app.use(express.urlencoded());
+
+
 app.engine('hbs', hbs({
   extname: 'hbs',
   layoutsDir: __dirname + '/views/layouts',
