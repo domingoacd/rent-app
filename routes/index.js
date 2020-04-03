@@ -19,10 +19,6 @@ router.route('/signup')
                 if (err) throw err;
                 console.log('Inserted!');
             });
-            // await database.query(`INSERT INTO users (full_name, email, password) VALUES ("${req.body.name}", ${req.body.email}, ${req.body.password})`, (err, result) => {
-            //     if (err) throw err;
-            //     console.log('Inserted!');
-            // });
 
         } else if (account_type == 'client') {
             await database.query(`INSERT INTO clients (full_name, license_number, phone_number) VALUES ("${req.body.name}", "${req.body.license}", "${req.body.phone}")`, (err, result) => {
