@@ -15,13 +15,22 @@ router.route('/signup')
         console.log(account_type)
 
         if (account_type == 'user') {
-            await database.query(`INSERT INTO clients (full_name, license_number, phone_number) VALUES ("${req.body.name}", ${req.body.license}, ${req.body.phone})`, (err, result) => {
+            await database.query(`INSERT INTO users (full_name, email, password) VALUES ("${req.body.name}", "${req.body.email}", "${req.body.password}")`, (err, result) => {
                 if (err) throw err;
                 console.log('Inserted!');
-            })
+            });
+            // await database.query(`INSERT INTO users (full_name, email, password) VALUES ("${req.body.name}", ${req.body.email}, ${req.body.password})`, (err, result) => {
+            //     if (err) throw err;
+            //     console.log('Inserted!');
+            // });
 
         } else if (account_type == 'client') {
-
+            await database.query(`INSERT INTO clients (full_name, license_number, phone_number) VALUES ("${req.body.name}", "${req.body.license}", "${req.body.phone}")`, (err, result) => {
+                if (err) {
+                    throw err;
+                };
+                console.log('Inserted client!');
+            });
         } else {
             throw 'ERROR - Account type can just be either user or client';
         }
