@@ -6,7 +6,8 @@ CREATE TABLE users (
     id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     full_name varchar(200) NOT NULL,
     email varchar(200) NOT NULL,
-    password varchar(64) NOT NULL
+    password varchar(64) NOT NULL,
+    registration_status varchar(45) NOT NULL DEFAULT 'pending' 
 );
 
 /* CREATE clients TABLE*/
