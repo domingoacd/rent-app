@@ -2,16 +2,38 @@
   <form action="" class="signup-form" method="POST">
     <div class="form-pair">
       <label for="name">Name</label>
-      <input type="text" name="name">
+      <input type="text" name="name" required>
     </div>
     <div class="form-pair">
-      <label for="license">License Number</label>
-      <input type="text" name="license">
+      <label for="account_type">I want to be:</label>
+      <select name="account_type" required>
+        <option value=""></option>
+        <option value="user">An user</option>
+        <option value="client">A client</option>
+      </select>
     </div>
-    <div class="form-pair">
-      <label for="phone">Phone Number</label>
-      <input type="text" name="phone">
+    <div class="fields-container" data-fields="user">
+      <div class="form-pair">
+        <label for="license">License Number</label>
+        <input type="text" name="license">
+      </div>
+      <div class="form-pair">
+        <label for="phone">Phone Number</label>
+        <input type="text" name="phone">
+      </div>
+    </div>
+    <div class="fields-container" data-fields="client">
+      <div class="form-pair">
+        <label for="license">License Number</label>
+        <input type="text" name="license">
+      </div>
+      <div class="form-pair">
+        <label for="phone">Phone Number</label>
+        <input type="text" name="phone">
+      </div>
     </div>
     <button class="btn" type="submit">Submit</button>
   </form>
 </div>
+
+<script src="../js/signup.js"></script>

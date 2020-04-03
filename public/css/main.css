@@ -65,9 +65,6 @@ h1 {
     width: 40%;
     min-width: 260px;
     max-width: 460px;
-    height: 70%;
-    min-height: 270px;
-    max-height: 390px;
     border-radius: 2px;
     padding: 5%;
     border: 1px solid #000; }
@@ -89,6 +86,21 @@ h1 {
         .signup .signup-form .form-pair input:focus {
           outline: none;
           border-bottom: 1px solid #7DE2D1; }
+      .signup .signup-form .form-pair select {
+        width: 10rem;
+        height: 2rem;
+        font-size: 1rem;
+        padding: 1%;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #8d8d8d; }
+        .signup .signup-form .form-pair select:focus {
+          outline: none; }
+    .signup .signup-form .fields-container {
+      height: 0;
+      overflow: hidden; }
+      .signup .signup-form .fields-container.show {
+        height: auto; }
     .signup .signup-form button[type="submit"] {
       position: absolute;
       bottom: -7%;

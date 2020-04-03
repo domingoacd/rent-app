@@ -11,10 +11,20 @@ router.route('/signup')
         res.render('signup');
     })
     .post(async (req, res, next) => {
-        await database.query(`INSERT INTO clients (full_name, license_number, phone_number) VALUES ("${req.body.name}", ${req.body.license}, ${req.body.phone})`, (err, result) => {
-            if (err) throw err;
-            console.log('Inserted!');
-        })
+        const {account_type} = req.body;
+        console.log(account_type)
+
+        if (account_type == 'user') {
+            await database.query(`INSERT INTO clients (full_name, license_number, phone_number) VALUES ("${req.body.name}", ${req.body.license}, ${req.body.phone})`, (err, result) => {
+                if (err) throw err;
+                console.log('Inserted!');
+            })
+
+        } else if (account_type == 'client') {
+
+        } else {
+            throw 'ERROR - Account type can just be either user or client';
+        }
         res.send('<h1>Inserted!</h1>');
     });
 module.exports = router;
