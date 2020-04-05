@@ -1,13 +1,23 @@
 /* CREATE DATABASE*/
 CREATE DATABASE rent_app;
 
+/*CREATE admin TABLE*/
+CREATE TABLE admins (
+    id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    username varchar(64) NOT NULL,
+    password varchar(64) NOT NULL
+);
 /* CREATE users TABLE*/
 CREATE TABLE users (
     id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     full_name varchar(200) NOT NULL,
     email varchar(200) NOT NULL,
     password varchar(64) NOT NULL,
-    registration_status varchar(45) NOT NULL DEFAULT 'pending' 
+    registration_status varchar(45) DEFAULT 'pending',
+    approved_by int,
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    approvation_date DATETIME,
+    FOREIGN KEY (approved_by) REFERENCES admins(id)
 );
 
 /* CREATE clients TABLE*/
@@ -21,6 +31,7 @@ CREATE TABLE clients (
 /* CREATE cars TABLE*/
 CREATE TABLE cars (
     id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    model varchar(64),
     year int(5) NOT NULL,
     kilometers int(16) NOT NULL,
     status varchar(10) NOT NULL CONSTRAINT status_chk CHECK(status == "rented" OR status == "available")  
