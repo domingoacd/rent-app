@@ -34,7 +34,7 @@ CREATE TABLE cars (
     model varchar(64),
     year int(5) NOT NULL,
     kilometers int(16) NOT NULL,
-    status varchar(10) NOT NULL CONSTRAINT status_chk CHECK(status == "rented" OR status == "available")  
+    status varchar(10) NOT NULL  
 );
 
 /* CREATE rents TABLE*/
