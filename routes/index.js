@@ -38,7 +38,7 @@ router.route('/signup')
 
 router.route('/registration_success').get((req, res, next) => {
     res.render('registration_success', {
-        account_type: req.query.account,
+        isAClient: req.query.account == 'client',
         name: req.query.name
     });
 });
