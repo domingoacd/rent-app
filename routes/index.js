@@ -27,7 +27,9 @@ router.route('/signup')
             await database.query(`INSERT INTO clients (full_name, license_number, phone_number) VALUES ("${req.body.name}", "${req.body.license}", "${req.body.phone}")`, (err, result) => {
                 if (err) {
                     throw err;
-                };
+                } else {
+                    res.redirect(`/registration_success?account=${account_type}&name=${req.body.name}`);
+                }
                 // res.render('registration_success', account_type);
             });
         } else {
