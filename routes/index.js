@@ -38,6 +38,26 @@ router.route('/signup')
         // res.render('registration_success');
     });
 
+router.route('/signin')
+    .get((req, res, next) => {
+        res.render('signin');
+    })
+    .post(async (req, res, next) => {
+        await database.query(`SELECT * FROM users WHERE email = "${req.body.email}" AND password = "${req.body.password}"`, (err, result) => {
+            if (err) {
+                throw err;
+            } else {
+                const user_data = result[0];
+                if(user_data) {
+                    console.log(user_data);
+                } else {
+                    console.log('no data');
+                }
+            }
+        });
+        res.send('hey');
+    });
+    
 router.route('/registration_success').get((req, res, next) => {
     res.render('registration_success', {
         isAClient: req.query.account == 'client',
