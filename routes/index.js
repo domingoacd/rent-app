@@ -64,4 +64,20 @@ router.route('/registration_success').get((req, res, next) => {
         name: req.query.name
     });
 });
+
+router.route('/admin')
+    .get((req, res, next) => {
+        res.render('admin');
+    })
+    .post(async (req, res, next) => {
+        await database.query(`SELECT * FROM admins WHERE username = "${req.body.username}" AND password = "${req.body.password}"`, (err, result) => {
+            if (err) {
+                throw err;
+            } else {
+                const admin_data = result[0];
+                console.log(admin_data);
+            }
+        });
+        res.send('hey')
+    });
 module.exports = router;
