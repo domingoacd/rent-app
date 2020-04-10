@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const database = require('../database/connect');
 
+let pending_users = null;
 router.get('/', async (req, res, next) => {
     res.render('home');
 });
@@ -70,14 +71,31 @@ router.route('/admin')
         res.render('admin');
     })
     .post(async (req, res, next) => {
-        await database.query(`SELECT * FROM admins WHERE username = "${req.body.username}" AND password = "${req.body.password}"`, (err, result) => {
+        await database.query(`SELECT * FROM admins WHERE username = "${req.body.username}" AND password = "${req.body.password}"`, async (err, result) => {
             if (err) {
                 throw err;
             } else {
                 const admin_data = result[0];
-                console.log(admin_data);
+                console.log(req.session);
+                if (admin_data) {
+                    await database.query(`SELECT * FROM users WHERE registration_status = "pending"`, 
+                    (err, result) => {
+                        if (err) {
+                            throw err;
+                        } else {
+                            pending_users = result;
+                            res.redirect('/admin/main');
+                        }
+                    });
+                }
             }
         });
-        res.send('hey')
     });
+router.get('/admin/main', (req, res, next) => {
+    console.log(pending_users);
+    res.render('admin_main', 
+    {
+        pending_users: pending_users
+    });
+});
 module.exports = router;

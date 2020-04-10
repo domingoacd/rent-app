@@ -1,0 +1,49 @@
+.admin-main {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100vw;
+  min-height: calc(100vh - #{$footer-height});
+  background-color: $first-color;
+
+  .side-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 25vh;
+    width: 200px;
+    background-color: $second-color;
+  }
+
+  .content {
+    width: calc(100vw - 200px); 
+    padding: 2%;
+
+    .users_table {
+      border: 1px solid rgba($fourth-color, 0.5);
+
+      thead {
+        border-bottom: 1px solid rgba($fourth-color, 0.5);
+      }
+
+      th {
+        font-size: 0.8rem;
+      }
+      td {
+        font-size: 0.7rem;
+      }
+    }
+  }
+}
+
+.footer {
+  padding-left: 210px;
+  bottom: 0;
+  background-color: $first-color;
+
+  .copyright-text {
+    color: $second-color;
+  }
+}

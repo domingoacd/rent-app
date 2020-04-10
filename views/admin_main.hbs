@@ -1,0 +1,36 @@
+<div class="admin-main">
+  <div class="side-menu">
+
+  </div>
+  <div class="content">
+    <table class="users_table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Registration date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each pending_users}}
+        <tr>
+          <td>
+            {{full_name}}
+          </td>
+          <td>
+            {{email}}
+          </td>
+          <td>
+            {{registration_status}}
+          </td>
+          <td>
+            {{registration_date}}
+          </td>
+
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
