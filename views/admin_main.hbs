@@ -22,7 +22,13 @@
             {{email}}
           </td>
           <td>
-            {{registration_status}}
+            <select name="" id="">
+              <option value="{{registration_status}}" >
+                {{registration_status}}
+              </option>
+              <option value="approve">Approved</option>
+              <option value="denied">Denied</option>
+            </select>
           </td>
           <td>
             {{registration_date}}

@@ -76,13 +76,18 @@ router.route('/admin')
                 throw err;
             } else {
                 const admin_data = result[0];
-                console.log(req.session);
+                
                 if (admin_data) {
                     await database.query(`SELECT * FROM users WHERE registration_status = "pending"`, 
                     (err, result) => {
                         if (err) {
                             throw err;
                         } else {
+                            result.forEach(entry => {
+                                let registration_date = entry.registration_date;
+                                entry.registration_date = registration_date.toString().slice(4,15);
+                                console.log(typeof entry.registration_date)
+                            });
                             pending_users = result;
                             res.redirect('/admin/main');
                         }
@@ -92,7 +97,6 @@ router.route('/admin')
         });
     });
 router.get('/admin/main', (req, res, next) => {
-    console.log(pending_users);
     res.render('admin_main', 
     {
         pending_users: pending_users
