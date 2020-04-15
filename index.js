@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const hbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 const home = require('./routes/index');
 
 
@@ -9,6 +10,7 @@ app.set('view engine', 'hbs');
 
 //MIDDLEWARES
 app.use(express.urlencoded());
+app.use(bodyParser.json());
 
 
 app.engine('hbs', hbs({

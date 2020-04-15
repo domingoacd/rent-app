@@ -28,24 +28,62 @@
       border-collapse: collapse;
       // border: 1px solid rgba($fourth-color, 0.5);
 
-      thead {
-        border: 1px solid rgba(43, 44, 40, 0.5);
-        margin-bottom: 1%;
-      }
-      
-      th {
+      .thead {
         position: sticky;
         top: 0;
-        z-index: 10;;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1%;
+        background-color: #fff;
+        
+        .bottons-container {
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          .admin-refresh {
+            color: $second-color;
+            background-color: $first-color;
+            border: 1px solid $second-color;
+            padding: 0 1%;
+            height: 1.5rem;
+            width: 2.5rem;
+            margin: 2px 3px;
+            border-radius: 20px;
+            font-size: 0.4rem;
+            &:hover {
+              transform: unset;
+            }
+          }
+          .admin-save {
+            color: $first-color;
+            font-size: 0.6rem;
+            padding: 0 1%;
+            height: 2rem;
+            width: 5rem;
+            margin: 2px 0;
+            align-self: flex-end;
+            &:hover {
+              transform: unset;
+            }
+          }
+        }
+        .tr {
+          border: 1px solid rgba(43, 44, 40, 0.5);
+        }
+      }
+      
+      .th {
         width: 25%;
         font-size: 0.8rem;
+        text-align: center;
         border-right: 1px solid rgba($fourth-color, 0.5);
         &:nth-last-child(1) {
           border: none;
           margin: 0;
         }
       }
-      tr {
+      .tr {
         display: flex;
         width: 100%;
         /* border-bottom: 1px solid rgba(43, 44, 40, 0.5); */
@@ -56,7 +94,7 @@
         }
         
       }
-      td {
+      .td {
         display: flex;
         justify-content: center;
         align-items: center;

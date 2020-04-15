@@ -3,40 +3,45 @@
 
   </div>
   <div class="content">
-    <table class="users_table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Status</th>
-          <th>Registration date</th>
-        </tr>
-      </thead>
-      <tbody>
+    <div class="users_table">
+      <div class="thead">
+        <div class="bottons-container">
+          <div class="btn admin-refresh j-refresh">Refresh</div>
+          <button class="btn admin-save j-save">Save changes</button>
+        </div>
+        <div class="tr">
+          <div class="th">Name</div>
+          <div class="th">Email</div>
+          <div class="th">Status</div>
+          <div class="th">Registration date</div>
+        </div>
+      </div>
+      <div class="tbody">
         {{#each pending_users}}
-        <tr>
-          <td>
-            {{full_name}}
-          </td>
-          <td>
-            {{email}}
-          </td>
-          <td>
-            <select name="" id="">
-              <option value="{{registration_status}}" >
-                {{registration_status}}
-              </option>
-              <option value="approve">Approved</option>
-              <option value="denied">Denied</option>
-            </select>
-          </td>
-          <td>
-            {{registration_date}}
-          </td>
-
-        </tr>
+          <div class="tr j-user" data-id="{{id}}">
+            <div class="td">
+              {{full_name}}
+            </div>
+            <div class="td">
+              {{email}}
+            </div>
+            <div class="td">
+              <select name="registration_status" id="">
+                <option value="{{registration_status}}">
+                  {{registration_status}}
+                </option>
+                <option value="approved">Approved</option>
+                <option value="denied">Denied</option>
+              </select>
+            </div>
+            <div class="td">
+              {{registration_date}}
+            </div>
+          </div>
         {{/each}}
-      </tbody>
-    </table>
+      </div>
+    </div>
   </div>
 </div>
+
+<script src="../js/admin-main.js"></script>
