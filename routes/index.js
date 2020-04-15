@@ -101,8 +101,7 @@ router
                   throw err;
                 } else {
                   result.forEach(entry => {
-                    let registration_date = entry.registration_date;
-                    entry.registration_date = registration_date
+                    entry.registration_date = entry.registration_date
                       .toString()
                       .slice(4, 15);
                   });
@@ -124,15 +123,21 @@ router.get('/admin/main', (req, res, next) => {
 
 async function getPendingUsers() {
     let users = null; 
-    await database.query('SELECT * FROM users WHERE registration_status = "pending"',
-        (err, response) => {
-            if (err) {
-                throw err;
-            } else {
-                users = response;
-            }
-        }
-    );
+    users = await new Promise((resolve, rejects) => 
+      database.query( `SELECT id, full_name, email, registration_date, registration_status FROM users WHERE registration_status = "pending";`,
+      (err, response) => {
+          if (err) {
+              reject(err);
+          } else {
+            response.forEach(entry => {
+              entry.registration_date = entry.registration_date
+                .toString()
+                .slice(4, 15);
+            });
+            resolve(response);
+          }
+      }
+    ));
     return users;
 } 
 router.post('/changeUsersStatus', async (req, res, next) => {
@@ -156,9 +161,16 @@ router.post('/changeUsersStatus', async (req, res, next) => {
   if (error_updating) {
     res.send('error');
   } else {
-    pendingUsers = getPendingUsers();
-    res.send({"pendingUsers":pendingUsers});
+    pendingUsers = await getPendingUsers();
+    res.send({ pendingUsers: pendingUsers });
   }
 
+});
+
+router.get('/getPendingUsers', async (req, res, next) => {
+  const users = {
+    pendingUsers: await getPendingUsers()
+  };
+  res.send(users);
 });
 module.exports = router;

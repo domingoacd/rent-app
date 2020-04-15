@@ -6,18 +6,42 @@
   width: 100vw;
   min-height: calc(100vh - #{$footer-height});
   background-color: $first-color;
+  .modal {
+      width: calc(100vw - 215px); 
+      left: unset;
+      &--loading {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255,255,255,0.8);
 
+        .spinner {
+          width: 10rem;
+          height: 10rem;
+          border-radius: 50%;
+          border: 4px solid $second-color;
+          border-left: 4px solid $third-color;
+        }
+
+        &.show {
+          .spinner {
+            animation: spin 1s linear infinite;
+          }
+        }
+      }
+    }
   .side-menu {
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
-    width: 25vh;
     width: 200px;
     background-color: $second-color;
   }
 
   .content {
+    position: relative;
     width: calc(100vw - 200px); 
     padding: 2%;
 
@@ -126,5 +150,16 @@
 
   .copyright-text {
     color: $second-color;
+  }
+}
+
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0)
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
