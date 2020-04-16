@@ -84,14 +84,18 @@ router
   .get((req, res, next) => {
     const errorHappened = req.query.error;
     let errorHandler = null;
-
-    if (errorHappened) {
-      errorHandler = {
-        error: true,
-        unknown_error: errorHappened == 'unknow'
+    
+    if (req.session.already_logged) {
+      res.redirect('/admin/main');
+    } else {
+      if (errorHappened) {
+        errorHandler = {
+          error: true,
+          unknown_error: errorHappened == 'unknow'
+        };
       }
+      res.render('admin', errorHandler);
     }
-    res.render('admin', errorHandler);
   })
   .post(async (req, res, next) => {
     await database.query(
@@ -104,10 +108,14 @@ router
           const admin_data = result[0];
 
           if (admin_data) {
+            req.session.already_logged = true;
+            req.session.admin_user = admin_data.id;
+
             await database.query(
               `SELECT * FROM users WHERE registration_status = "pending"`,
               (err, result) => {
                 if (err) {
+                  res.redirect('/admin?error=unknow');
                   throw err;
                 } else {
                   result.forEach(entry => {
@@ -121,16 +129,20 @@ router
               }
             );
           } else {
-            
+            res.redirect('/admin?error=wrong_credentials');
           }
         }
       }
     );
   });
 router.get('/admin/main', (req, res, next) => {
-  res.render('admin_main', {
-    pending_users: pending_users
-  });
+  if (req.session.already_logged) {
+    res.render('admin_main', {
+      pending_users: pending_users
+    });
+  } else {
+    res.redirect('/admin');
+  }
 });
 
 async function getPendingUsers() {
@@ -158,7 +170,11 @@ router.post('/changeUsersStatus', async (req, res, next) => {
   let error_updating = null;
   modifiedUsers.forEach(async user => {
     await database.query(`
-        UPDATE users SET registration_status = "${user.user_registration_status}" WHERE id = ${user.user_id}`,
+        UPDATE users SET 
+          registration_status = "${user.user_registration_status}",
+          approved_by = "${req.session.admin_user}",
+          approvation_date = NOW()
+          WHERE id = ${user.user_id}`,
         (err, res) => {
             if (err) {
                 error_updating = true;
