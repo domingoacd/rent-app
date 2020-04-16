@@ -207,7 +207,7 @@ router.get('/logOut', async (req, res, next) => {
     if (error) {
       console.log(error);
     } else {
-      res.redirect('/admin');
+      res.send({ loggedOut: true });
     }
   });
 });

@@ -293,15 +293,19 @@ h1 {
     align-items: center;
     background-color: #131515; }
     .admin-main .side-menu ul {
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center; }
       .admin-main .side-menu ul li {
+        width: 100%;
         margin-bottom: 2%; }
         .admin-main .side-menu ul li .btn--log-out {
           width: 100%;
           color: #FFFAFB; }
+          .admin-main .side-menu ul li .btn--log-out:hover {
+            transform: unset; }
   .admin-main .content {
     position: relative;
     width: calc(100vw - 200px);

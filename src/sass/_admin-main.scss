@@ -43,17 +43,22 @@
     background-color: $second-color;
     
     ul {
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       li {
+        width: 100%;
         margin-bottom: 2%;
 
         .btn {
           &--log-out {
             width: 100%;
             color: $first-color;
+            &:hover {
+              transform: unset;
+            }
           }
         }
       }

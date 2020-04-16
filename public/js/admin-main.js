@@ -111,7 +111,15 @@ function logOut(e) {
   fetch('/logOut')
   .then(response => response.json())
   .catch(error => console.log(error))
-  .then(data => console.log(data));
+  .then(data => {
+    const sessionDestroyed = data.loggedOut;
+    if (sessionDestroyed) {
+      console.log(sessionDestroyed);
+      window.location.href = "/admin";
+    } else {
+      console.error("ERROR while logging out");
+    }
+  });
 }
 
 saveBtn.addEventListener('click', handleUsersApproval);
