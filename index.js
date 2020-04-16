@@ -22,6 +22,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.static('public'));
 app.use('/', require('./routes'));
 app.use('/admin', require('./routes/admin'));
+app.use('/home', require('./routes/home'));
 app.use('/async', require('./routes/async'));
 
 //SERVER START

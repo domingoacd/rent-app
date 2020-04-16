@@ -56,19 +56,22 @@ router
     await database.query(
       `SELECT * FROM users WHERE email = "${req.body.email}" AND password = "${req.body.password}"`,
       (err, result) => {
+        let user_data;
         if (err) {
           throw err;
         } else {
-          const user_data = result[0];
+          user_data = result[0];
+          
           if (user_data) {
-            console.log(user_data);
+            req.session.user = user_data.id;
+            req.session.user_status = user_data.registration_status;
+            res.redirect('/home');
           } else {
             console.log('no data');
           }
         }
       }
     );
-    res.send('hey');
   });
 
 router.route('/registration_success').get((req, res, next) => {
