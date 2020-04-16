@@ -3,9 +3,6 @@ const session = require('express-session');
 const app = express();
 const hbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const home = require('./routes/index');
-
-
 
 app.set('view engine', 'hbs');
 
@@ -20,14 +17,14 @@ app.engine('hbs', hbs({
   partialsDir: __dirname + '/views/partials'
 }));
 
-
+//ROUTES
 app.use(express.static(__dirname + '/public'));
-app.use('/', home);
 app.use(express.static('public'));
-// app.get('/', (req, res)=> {
-//   res.send('test');
-// });
+app.use('/', require('./routes'));
+app.use('/admin', require('./routes/admin'));
+app.use('/async', require('./routes/async'));
 
+//SERVER START
 app.listen(3000, () => {
   console.log('Running on port 3000');
   console.log(__dirname);

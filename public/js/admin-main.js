@@ -61,7 +61,7 @@ function handleReceivedUsers(users) {
 }
 
 function sendData(data) {
-  const url = '/changeUsersStatus';
+  const url = '/async/changeUsersStatus';
   fetch(url, {
     method: 'POST',
     body: JSON.stringify(data),
@@ -98,7 +98,7 @@ function handleUsersApproval(e) {
 }
 
 function refreshUsersTable(e) {
-  fetch('/getPendingUsers')
+  fetch('/async/getPendingUsers')
   .then(response => response.json())
   .catch(error => console.error(error))
   .then((data) => {
@@ -108,7 +108,7 @@ function refreshUsersTable(e) {
 }
 
 function logOut(e) {
-  fetch('/logOut')
+  fetch('/async/logOut')
   .then(response => response.json())
   .catch(error => console.log(error))
   .then(data => {
