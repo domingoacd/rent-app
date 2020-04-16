@@ -1,11 +1,20 @@
 const saveBtn = document.querySelector('.j-save');
 const refreshBtn = document.querySelector('.j-refresh');
+const logOutBtn = document.querySelector('.j-log-out')
 
 function toggleLoadingView() {
   const modalLoading = document.querySelector('.modal.modal--loading');
   modalLoading.classList.toggle('show')
 }
 
+function showNoMoreUsersMessage() {
+  const container = document.querySelector('.j-tbody');
+  const message_h2 = document.createElement('h2');
+
+  message_h2.classList.add('empty_users_message');
+  message_h2.textContent = 'There are not users waiting.';
+  container.appendChild(message_h2);
+}
 function handleReceivedUsers(users) {
   const pendingUsers = users ? users.pendingUsers : false;
   const usersContainer = document.querySelector('#users_table .j-tbody ');
@@ -40,6 +49,10 @@ function handleReceivedUsers(users) {
       });
       usersContainer.appendChild(user_row);
     });
+
+    if(pendingUsers.length ===0) {
+      showNoMoreUsersMessage();
+    }
 
   } else {
     console.log("ERROR");
@@ -94,5 +107,13 @@ function refreshUsersTable(e) {
   });
 }
 
+function logOut(e) {
+  fetch('/logOut')
+  .then(response => response.json())
+  .catch(error => console.log(error))
+  .then(data => console.log(data));
+}
+
 saveBtn.addEventListener('click', handleUsersApproval);
 refreshBtn.addEventListener('click', refreshUsersTable);
+logOutBtn.addEventListener('click', logOut);

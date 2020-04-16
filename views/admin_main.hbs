@@ -1,6 +1,10 @@
 <div class="admin-main">
   <div class="side-menu">
-
+    <ul>
+      <li>
+        <button class="btn btn--log-out j-log-out">Log out</button>
+      </li>
+    </ul>
   </div>
   <div class="modal modal--loading">
     <div class="spinner"></div>
@@ -43,7 +47,7 @@
             </div>
           </div>
         {{else}}
-          <h2>There are not users waiting</h2>
+          <h2 class="empty_users_message">There are not users waiting.</h2>
         {{/each}}
       </div>
     </div>

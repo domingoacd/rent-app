@@ -37,7 +37,27 @@
     top: 0;
     bottom: 0;
     width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: $second-color;
+    
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      li {
+        margin-bottom: 2%;
+
+        .btn {
+          &--log-out {
+            width: 100%;
+            color: $first-color;
+          }
+        }
+      }
+    }
   }
 
   .content {
@@ -138,6 +158,11 @@
             outline: 1px solid rgba(0,0,0,0.5);
           }
         }
+      }
+
+      .empty_users_message {
+        text-align: center;
+        color: rgba($fourth-color, 0.5);
       }
     }
   }

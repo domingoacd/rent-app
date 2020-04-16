@@ -201,4 +201,14 @@ router.get('/getPendingUsers', async (req, res, next) => {
   };
   res.send(users);
 });
+
+router.get('/logOut', async (req, res, next) => {
+  req.session.destroy(error => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.redirect('/admin');
+    }
+  });
+});
 module.exports = router;
