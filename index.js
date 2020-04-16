@@ -12,7 +12,7 @@ app.set('view engine', 'hbs');
 //MIDDLEWARES
 app.use(express.urlencoded());
 app.use(bodyParser.json());
-
+app.use(session({secret: 'ssshhhh'}));
 
 app.engine('hbs', hbs({
   extname: 'hbs',

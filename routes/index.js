@@ -82,13 +82,23 @@ router.route('/registration_success').get((req, res, next) => {
 router
   .route('/admin')
   .get((req, res, next) => {
-    res.render('admin');
+    const errorHappened = req.query.error;
+    let errorHandler = null;
+
+    if (errorHappened) {
+      errorHandler = {
+        error: true,
+        unknown_error: errorHappened == 'unknow'
+      }
+    }
+    res.render('admin', errorHandler);
   })
   .post(async (req, res, next) => {
     await database.query(
       `SELECT * FROM admins WHERE username = "${req.body.username}" AND password = "${req.body.password}"`,
       async (err, result) => {
         if (err) {
+          res.redirect("/admin?error=unknow");
           throw err;
         } else {
           const admin_data = result[0];
@@ -110,6 +120,8 @@ router
                 }
               }
             );
+          } else {
+            
           }
         }
       }

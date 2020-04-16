@@ -1,4 +1,13 @@
 <div class="admin">
+  {{#if error}}
+    <div class="message error">
+      {{#if unknown_error}}
+        Try again! There have been an error.
+      {{else}}
+        Wrong user/password.
+      {{/if}}
+    </div>
+  {{/if}}
   <form action="" class="admin-form" method="POST">
     <div class="form-pair">
       <label for="username">User</label>
