@@ -64,8 +64,9 @@ router
           
           if (user_data) {
             req.session.user = user_data.id;
+            req.session.user_name = user_data.full_name;
             req.session.user_status = user_data.registration_status;
-            res.redirect('/home');
+            res.redirect('/panel');
           } else {
             console.log('no data');
           }

@@ -1,0 +1,18 @@
+<div class="dashboard">
+{{#if approved_user}}
+  Ap
+{{else}}
+  <div class="dashboard__message">
+    <h2 class="title">
+      Hello {{user_name}}
+    </h2>
+    <div class="text">
+      {{#if denied_user}}
+        Your registration has been denied. If you think this is a mistake, please send an email to ee@nope.com
+      {{else}}
+        Your registration is being evaluated by an administrator. Please wait a little bit.
+      {{/if}}
+    </div>
+  </div>
+{{/if}}
+</div>
