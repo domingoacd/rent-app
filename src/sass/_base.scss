@@ -23,6 +23,10 @@ h1 {
   font-family: $font-title;
 }
 
+a {
+  text-decoration: none;
+}
+
 .modal {
   position: fixed;
   top: 0;

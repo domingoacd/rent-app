@@ -1,6 +1,15 @@
-<div class="dashboard">
+<div class="panel">
 {{#if approved_user}}
-  Ap
+  <div class="side-menu">
+    <ul>
+      <li>
+        <a href="/panel/cars">Cars</a>
+      </li>
+      <li>
+        <a href="/panel/clients">Clients</a>
+      </li>
+    </ul>
+  </div>
 {{else}}
   <div class="dashboard__message">
     <h2 class="title">

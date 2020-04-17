@@ -11,4 +11,15 @@ router.get('/', (req, res, next) => {
     pending_user : req.session.user_status == "pending"
   });
 });
+
+router.route('/cars')
+  .get(async (req, res, next) => {
+    await database.query(`SELECT * FROM cars`, (err, result) => {
+      if (err) {
+
+      } else {
+        res.render("cars");
+      }
+    }); 
+  });
 module.exports = router;

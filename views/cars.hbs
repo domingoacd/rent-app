@@ -1,0 +1,45 @@
+<div class="modal modal--addCar j-modal-add">
+  <div class="modal-content">
+    <form action="" class="form-addCar">
+      <div class="form-pair">
+        <label for="model">Model</label>
+        <input type="text" name="model" id="model" required>
+      </div>
+      <div class="form-pair">
+        <label for="year">Year</label>
+        <input type="number" name="year" id="year" required>
+      </div>
+      <div class="form-pair">
+        <label for="kilometers">Kilometers</label>
+        <input type="number" name="kilometers" id="kilometers" required>
+      </div>
+      <div class="form-pair">
+        <div class="image-text">Image</div>
+        <div src="" alt="" class="image-preview j-preview"></div>
+        <label for="image" class="image-label j-image-label"><span>Select file</span></label>
+        <input type="file" name="image" id="image" accept="image/*">
+      </div>
+      <button class="btn" type="submit">Add</button>
+    </form>
+  </div>
+</div>
+<div class="cars">
+  <div class="side-menu">
+    <ul>
+      <li>
+        <a href="/panel">Home</a>
+      </li>
+      <li>
+        <a href="/panel/clients">Clients</a>
+      </li>
+      <li>
+        <button class="btn btn-addCar j-addCar">Add Car</button>
+      </li>
+    </ul>
+  </div>
+  <div class="content">
+
+  </div>
+</div>
+
+<script src="../js/cars.js"></script>
