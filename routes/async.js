@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const database = require('../database/connect');
 const utilities = require('../src/utilities');
+const fs = require('fs');
 
 router.post('/changeUsersStatus', async (req, res, next) => {
   const modifiedUsers = req.body;
@@ -40,7 +41,7 @@ router.get('/getPendingUsers', async (req, res, next) => {
   res.send(users);
 });
 
-router.get('/logOut', async (req, res, next) => {
+router.get('/logOut', (req, res, next) => {
   req.session.destroy(error => {
     if (error) {
       console.log(error);
@@ -49,5 +50,20 @@ router.get('/logOut', async (req, res, next) => {
     }
   });
 });
-
+router.post('/saveNewCar', async (req, res, next) => {
+  console.log(req.body);
+  await database.query(`INSERT INTO cars (model, year, kilometers, status) VALUES ("${req.body.model}", ${req.body.year}, ${req.body.kilometers}, "available")`, (err, result) => {
+    // const car_image_
+    if (err) {
+      throw err;
+    } else {
+      try {
+        if(!fs.existsSync())
+        fs.mkdirSync()
+      } catch (e) {
+        
+      }
+    }
+  });
+});
 module.exports = router;
