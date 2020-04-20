@@ -17,42 +17,54 @@ function showModal(e) {
 function saveNewCar(e) {
   e.preventDefault();
   const url = '/async/saveNewCar';
-  const data = {
-    "model" : document.getElementById('model').value,
-    "year" : document.getElementById('year').value,
-    "kilometers" : document.getElementById('kilometers').value,
-    "image" : document.getElementById('image').value
-  };
+  // const data = {
+  //   "model" : document.getElementById('model').value,
+  //   "year" : document.getElementById('year').value,
+  //   "kilometers" : document.getElementById('kilometers').value,
+  //   "image" : document.getElementById('image').value
+  // };
+  const data = new FormData(document.querySelector('.j-form-addCar'));
   fetch(url, {
     method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-type': 'application/json'
-    }
+    body: data,
+    // headers: {
+    //   'Content-type': 'multipart/form-data'
+    // }
   })
     .then(res => res.json())
     .catch(error => console.error(error))
     .then(wewe => console.log(wewe));
 }
 
+function getImageAsData(image) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+
+    fileReader.onloadend = () => {
+      resolve(fileReader.result);
+    }
+
+    fileReader.readAsDataURL(image);
+
+  });
+
+}
+
 function manageImageInput(e) {
   const fileWasUploaded = fileInput.files.length > 0;
   const fileLabel = document.querySelector('.j-image-label');
   const textSpan = fileLabel.querySelector('span');
-  const fileReader = new FileReader();
 
   if (fileWasUploaded) {
-    
-    fileReader.onload = () => {
-      fileLabel.style.backgroundImage = `url(${fileReader.result})`;
-      fileLabel.classList.add('uploaded')
-      textSpan.textContent = "File added!"
-    };
+    getImageAsData(fileInput.files[0])
+      .then((data)=> {
+        fileLabel.style.backgroundImage = `url(${data})`;
+        fileLabel.classList.add('uploaded')
+        textSpan.textContent = "File added!"
 
-    fileReader.readAsDataURL(fileInput.files[0]);
+      });
   } else {
-
-    fileLabel.style.backgroundImage = `url(${fileReader.result})`;
+    fileLabel.style.backgroundImage = `unset`;
     fileLabel.classList.remove('upload');
     textSpan.textContent = "Select file";
   }

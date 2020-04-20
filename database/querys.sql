@@ -34,7 +34,8 @@ CREATE TABLE cars (
     model varchar(64),
     year int(5) NOT NULL,
     kilometers int(16) NOT NULL,
-    status varchar(10) NOT NULL  
+    status varchar(10) NOT NULL,
+    image_name varchar(300)  
 );
 
 /* CREATE rents TABLE*/

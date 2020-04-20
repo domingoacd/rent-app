@@ -1,8 +1,23 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const multer = require('multer'); 
+const image_storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'database/car_images');
+  },
+  filename: (req, file, cb) => {
+    const file_name = `
+      ${req.body.model}_${req.body.year}_${req.body.kilometers}_${Date.now()}${path.extname(file.originalname)}
+    `; 
+    cb(null, file_name.trim());
+  }
+});
+const image_upload = multer({storage: image_storage});
 const router = express.Router();
 const database = require('../database/connect');
 const utilities = require('../src/utilities');
-const fs = require('fs');
+
 
 router.post('/changeUsersStatus', async (req, res, next) => {
   const modifiedUsers = req.body;
@@ -50,19 +65,13 @@ router.get('/logOut', (req, res, next) => {
     }
   });
 });
-router.post('/saveNewCar', async (req, res, next) => {
-  console.log(req.body);
-  await database.query(`INSERT INTO cars (model, year, kilometers, status) VALUES ("${req.body.model}", ${req.body.year}, ${req.body.kilometers}, "available")`, (err, result) => {
-    // const car_image_
+router.post('/saveNewCar', image_upload.single('image'), async (req, res, next) => {
+
+  await database.query(`INSERT INTO cars (model, year, kilometers, status, image_name) VALUES ("${req.body.model}", ${req.body.year}, ${req.body.kilometers}, "available", "${req.file.filename}")`, (err, result) => {
     if (err) {
       throw err;
     } else {
-      try {
-        if(!fs.existsSync())
-        fs.mkdirSync()
-      } catch (e) {
-        
-      }
+      
     }
   });
 });
