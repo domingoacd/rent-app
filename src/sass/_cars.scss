@@ -176,6 +176,7 @@
       padding: 5%;
 
       .card {
+        position: relative;
         height: 350px;
         display: flex;
         flex-direction: column;
@@ -185,13 +186,45 @@
         padding: 1% 4%;
         cursor: pointer;
         text-align: center;
-        box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+        border: 1px solid #13151566;
 
         img {
           width: auto;
           height: 25%;
         }
-        
+        .car_model {
+          width: 108%;
+          border: 1px solid #000; 
+          border-right: none;
+          border-left: none;
+          color: #fffafb;
+          background-color: #131515;
+        }
+
+        .car_year, .car_kilometers {
+          span {
+            font-weight: 100;
+            font-size: 0.9rem;
+          }
+        }
+
+        .car_availability {
+          position: absolute;
+          top: 2%;
+          left: -15%;
+          transform: rotate(-45deg);
+          border-radius: 7px;
+          padding: 1% 2%;
+          &.available {
+            background-color: green;
+            box-shadow: 0px 0px 10px green;
+          }
+          &.rented {
+            background-color: red;
+            box-shadow: 0px 0px 10px red;
+          }
+        }
       }
     }
   }

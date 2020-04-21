@@ -589,6 +589,7 @@ a {
       gap: 15px;
       padding: 5%; }
       .cars .content .cars_dashboard .card {
+        position: relative;
         height: 350px;
         display: flex;
         flex-direction: column;
@@ -598,10 +599,34 @@ a {
         padding: 1% 4%;
         cursor: pointer;
         text-align: center;
-        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5); }
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+        border: 1px solid #13151566; }
         .cars .content .cars_dashboard .card img {
           width: auto;
           height: 25%; }
+        .cars .content .cars_dashboard .card .car_model {
+          width: 108%;
+          border: 1px solid #000;
+          border-right: none;
+          border-left: none;
+          color: #fffafb;
+          background-color: #131515; }
+        .cars .content .cars_dashboard .card .car_year span, .cars .content .cars_dashboard .card .car_kilometers span {
+          font-weight: 100;
+          font-size: 0.9rem; }
+        .cars .content .cars_dashboard .card .car_availability {
+          position: absolute;
+          top: 2%;
+          left: -15%;
+          transform: rotate(-45deg);
+          border-radius: 7px;
+          padding: 1% 2%; }
+          .cars .content .cars_dashboard .card .car_availability.available {
+            background-color: green;
+            box-shadow: 0px 0px 10px green; }
+          .cars .content .cars_dashboard .card .car_availability.rented {
+            background-color: red;
+            box-shadow: 0px 0px 10px red; }
 
 .reg_container {
   width: 100%;

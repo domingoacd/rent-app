@@ -50,11 +50,14 @@
             {{model}}
           </h3>
           <p class="car_year">
-            Year: {{year}}
+            Year: <span>{{year}}</span>
           </p>
           <p class="car_kilometers">
-            Kilometers: {{kilometers}}
+            Kilometers: <span>{{kilometers}}</span>
           </p>
+          <div class="car_availability {{status}}">
+            {{status}}
+          </div>
         </div>
         {{!-- {{id}}
         {{model}}
