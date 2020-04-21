@@ -4,7 +4,7 @@ const path = require('path');
 const multer = require('multer'); 
 const image_storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'database/car_images');
+    cb(null, 'public/images/car_images');
   },
   filename: (req, file, cb) => {
     const file_name = `
@@ -66,12 +66,17 @@ router.get('/logOut', (req, res, next) => {
   });
 });
 router.post('/saveNewCar', image_upload.single('image'), async (req, res, next) => {
-
-  await database.query(`INSERT INTO cars (model, year, kilometers, status, image_name) VALUES ("${req.body.model}", ${req.body.year}, ${req.body.kilometers}, "available", "${req.file.filename}")`, (err, result) => {
+  let car_image_path = null;
+  if (req.file) {
+    car_image_path = `"${req.file.path.split('public/')[1]}"`;
+  }
+  await database.query(`INSERT INTO cars (model, year, kilometers, status, image_name) VALUES ("${req.body.model}", ${req.body.year}, ${req.body.kilometers}, "available", ${car_image_path})`, async (err, result) => {
+    let cars = null;
     if (err) {
       throw err;
     } else {
-      
+      cars = await utilities.getAllCars();
+      res.send({cars: cars});    
     }
   });
 });

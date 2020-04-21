@@ -14,26 +14,21 @@ function showModal(e) {
   modal.classList.add('show');
 }
 
+function hanldeReceivedCars(cars) {
+  console.log(cars);
+}
+
 function saveNewCar(e) {
   e.preventDefault();
   const url = '/async/saveNewCar';
-  // const data = {
-  //   "model" : document.getElementById('model').value,
-  //   "year" : document.getElementById('year').value,
-  //   "kilometers" : document.getElementById('kilometers').value,
-  //   "image" : document.getElementById('image').value
-  // };
   const data = new FormData(document.querySelector('.j-form-addCar'));
   fetch(url, {
     method: 'POST',
-    body: data,
-    // headers: {
-    //   'Content-type': 'multipart/form-data'
-    // }
+    body: data
   })
     .then(res => res.json())
     .catch(error => console.error(error))
-    .then(wewe => console.log(wewe));
+    .then(hanldeReceivedCars);
 }
 
 function getImageAsData(image) {

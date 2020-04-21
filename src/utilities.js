@@ -21,5 +21,16 @@ module.exports = {
       )
     );
     return users;
+  },
+  getAllCars: async function() {
+    return new Promise((resolve, reject) => {
+      database.query('SELECT * FROM cars', (err, response) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(response);
+        }
+      });
+    });
   }
 };

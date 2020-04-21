@@ -18,7 +18,8 @@ router.route('/cars')
       if (err) {
 
       } else {
-        res.render("cars");
+        
+        res.render("cars", {cars: result});
       }
     }); 
   });

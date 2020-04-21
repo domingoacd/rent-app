@@ -38,7 +38,36 @@
     </ul>
   </div>
   <div class="content">
-
+    <div class="cars_dashboard">
+      {{#each cars}}
+        <div class="card" data-carnumber="{{id}}">
+          {{#if image_name}}
+            <img src="/{{image_name}}" alt="">
+          {{else}}
+            No image
+          {{/if}}
+          <h3 class="car_model">
+            {{model}}
+          </h3>
+          <p class="car_year">
+            Year: {{year}}
+          </p>
+          <p class="car_kilometers">
+            Kilometers: {{kilometers}}
+          </p>
+        </div>
+        {{!-- {{id}}
+        {{model}}
+        {{year}}
+        {{kilometers}}
+        {{status}}
+        {{image_name}}
+        <br>
+        <br>
+        <br>
+        <br> --}}
+      {{/each}}
+    </div>
   </div>
 </div>
 
