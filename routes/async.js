@@ -80,4 +80,21 @@ router.post('/saveNewCar', image_upload.single('image'), async (req, res, next) 
     }
   });
 });
+
+router.post('/deleteCar', (req, res, next) => {
+  console.log(req.body);
+  const carId = req.body.carId;
+  let status = {
+    car_deleted: ''
+  };
+  database.query(`DELETE FROM cars WHERE id = ${carId}`, (err, result) => {
+    if (err) {
+      status.car_deleted = false;
+      throw err
+    } else {
+      status.car_deleted = true;
+    }
+    res.send(status);
+  })
+});
 module.exports = router;

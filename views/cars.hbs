@@ -1,3 +1,6 @@
+<div class="message j-message-box">
+  
+</div>
 <div class="modal modal--addCar j-modal-add">
   <div class="modal-content">
     <form action="" class="form-addCar j-form-addCar">
@@ -23,6 +26,18 @@
     </form>
   </div>
 </div>
+<div class="modal modal--deleteCar" id="delete-modal">
+  <div class="modal-content">
+    <p class="title">Are you sure yo want to delete this car?</p>
+    <div class="j-modal-carInfo modal-info">
+
+    </div>
+    <div class="buttons-container">
+      <div class="btn btn--delete j-accept-delete">Delete</div>
+      <p class="cancel-delete j-cancel-delete">Cancel</p>
+    </div>
+  </div>
+</div>
 <div class="cars">
   <div class="side-menu">
     <ul>
@@ -38,7 +53,7 @@
     </ul>
   </div>
   <div class="content">
-    <div class="cars_dashboard">
+    <div class="cars_dashboard j-carsDashboard">
       {{#each cars}}
         <div class="card" data-carnumber="{{id}}">
           {{#if image_name}}
@@ -58,17 +73,10 @@
           <div class="car_availability {{status}}">
             {{status}}
           </div>
+          <div class="delete-car j-delete-car {{status}}">
+            Delete Car
+          </div>
         </div>
-        {{!-- {{id}}
-        {{model}}
-        {{year}}
-        {{kilometers}}
-        {{status}}
-        {{image_name}}
-        <br>
-        <br>
-        <br>
-        <br> --}}
       {{/each}}
     </div>
   </div>

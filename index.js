@@ -26,7 +26,10 @@ app.use('/panel', require('./routes/panel'));
 app.use('/async', require('./routes/async'));
 
 //SERVER START
-app.listen(3000, () => {
+app.listen(3000, (err) => {
   console.log('Running on port 3000');
   console.log(__dirname);
+  if (err) {
+    throw err;
+  }
 });

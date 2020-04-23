@@ -49,9 +49,13 @@ a {
   justify-content: center;
   align-items: center; }
   .message.error {
-    background-color: rgba(255, 0, 0, 0.9);
+    background-color: red;
     color: #FFFAFB;
     box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.8); }
+  .message.success {
+    background-color: green;
+    color: #FFFAFB;
+    box-shadow: 0px 0px 10px rgba(0, 128, 0, 0.8); }
 
 .btn {
   display: flex;
@@ -448,6 +452,18 @@ a {
         .panel .side-menu ul li a {
           color: #FFFAFB; }
 
+.message {
+  position: fixed;
+  top: -100%;
+  right: 1%;
+  visibility: hidden;
+  opacity: 0;
+  transition: top 0.5s; }
+  .message.show {
+    top: 1%;
+    opacity: 1;
+    visibility: visible; }
+
 .modal {
   display: flex;
   justify-content: center;
@@ -527,6 +543,42 @@ a {
           padding: 2%;
           width: 40%;
           color: #FFFAFB; }
+  .modal--deleteCar {
+    background-color: rgba(0, 0, 0, 0.5); }
+    .modal--deleteCar .modal-content {
+      background-color: #FFFAFB;
+      border-radius: 20px;
+      width: 17rem;
+      height: 20rem;
+      padding: 2%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      .modal--deleteCar .modal-content .title {
+        text-align: center; }
+      .modal--deleteCar .modal-content .modal-info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center; }
+        .modal--deleteCar .modal-content .modal-info img {
+          max-height: 9rem;
+          width: 50%; }
+      .modal--deleteCar .modal-content .buttons-container {
+        width: 100%;
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        .modal--deleteCar .modal-content .buttons-container .btn--delete {
+          color: #FFFAFB; }
+        .modal--deleteCar .modal-content .buttons-container .cancel-delete {
+          margin-left: 5%;
+          font-size: 0.7rem;
+          border-bottom: 1px solid #131515;
+          cursor: pointer; }
 
 .cars {
   display: flex;
@@ -597,7 +649,6 @@ a {
         align-items: center;
         border-radius: 20px;
         padding: 1% 4%;
-        cursor: pointer;
         text-align: center;
         box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
         border: 1px solid #13151566; }
@@ -611,14 +662,16 @@ a {
           border-left: none;
           color: #fffafb;
           background-color: #131515; }
-        .cars .content .cars_dashboard .card .car_year span, .cars .content .cars_dashboard .card .car_kilometers span {
-          font-weight: 100;
-          font-size: 0.9rem; }
+        .cars .content .cars_dashboard .card .car_year, .cars .content .cars_dashboard .card .car_kilometers {
+          display: flex;
+          align-items: center;
+          font-size: 0.7rem; }
+          .cars .content .cars_dashboard .card .car_year span, .cars .content .cars_dashboard .card .car_kilometers span {
+            font-weight: 100;
+            font-size: 0.6rem;
+            margin-left: 5%; }
         .cars .content .cars_dashboard .card .car_availability {
-          position: absolute;
-          top: 2%;
-          left: -15%;
-          transform: rotate(-45deg);
+          width: 100%;
           border-radius: 7px;
           padding: 1% 2%; }
           .cars .content .cars_dashboard .card .car_availability.available {
@@ -627,6 +680,12 @@ a {
           .cars .content .cars_dashboard .card .car_availability.rented {
             background-color: red;
             box-shadow: 0px 0px 10px red; }
+        .cars .content .cars_dashboard .card .delete-car {
+          font-size: 0.5rem;
+          text-decoration: underline;
+          cursor: pointer; }
+          .cars .content .cars_dashboard .card .delete-car.rented {
+            visibility: hidden; }
 
 .reg_container {
   width: 100%;
