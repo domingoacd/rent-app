@@ -1,0 +1,64 @@
+<div class="message j-message-box">
+
+</div>
+<div class="modal modal--addClient j-modal-addClient">
+  <div class="modal-content">
+    <form action="" class="form-addClient j-form-addClient">
+      <div class="form-pair">
+        <label for="name">Full Name</label>
+        <input type="text" name="name" id="name" required>
+      </div>
+      <div class="form-pair">
+        <label for="license">License Number</label>
+        <input type="number" name="license" id="license" required>
+      </div>
+      <div class="form-pair">
+        <label for="phone">Phone Number</label>
+        <input type="tel" name="phone" id="phone" required>
+      </div>
+      <button class="btn j-saveClient" type="submit">Add</button>
+    </form>
+  </div>
+</div>
+<div class="clients">
+  <div class="side-menu">
+    <ul>
+      <li>
+        <a href="/panel">Home</a>
+      </li>
+      <li>
+        <a href="/panel/cars">Cars</a>
+      </li>
+      <li>
+        <button class="btn btn--addClient j-addClient">Add Client</button>
+      </li>
+    </ul>
+  </div>
+  <div class="content">
+    <div class="clients-table">
+      <div class="thead">
+        <div class="tr">
+          <div class="th">
+            Name
+          </div>
+          <div class="th">
+            License Number
+          </div>
+          <div class="th">
+            Phone Number
+          </div>
+        </div>
+      </div>
+      <div class="tbody">
+        <div class="tr">
+          <div class="td"></div>
+          <div class="td"></div>
+          <div class="td"></div>
+          <div class="td"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/clients.js"></script>

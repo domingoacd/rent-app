@@ -73,7 +73,10 @@ function saveNewCar(e) {
     body: data
   })
     .then(res => res.json())
-    .catch(error => showMessageOfType('There have been an error', 'error'))
+    .catch(error => {
+      showMessageOfType('There have been an error', 'error');
+      console.error(error);
+    })
     .then(hanldeReceivedCars);
 }
 

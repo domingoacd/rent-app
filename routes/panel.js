@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
       pending_user : req.session.user_status == "pending"
     });
   } else {
-    res.render('signin');
+    res.redirect('/signin');
   }
 });
 
@@ -26,4 +26,10 @@ router.route('/cars')
       }
     }); 
   });
+  
+router.route('/clients')
+  .get(async (req, res, next) => {
+    res.render('clients');
+  });
+
 module.exports = router;

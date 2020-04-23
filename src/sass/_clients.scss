@@ -1,0 +1,313 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &--addClient {
+    background-color: rgba(0,0,0,0.5);
+    
+    .modal-content {
+      background-color: #FFFAFB;
+      border-radius: 20px;
+      width: 20rem;
+      height: 20rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .form-addCar {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 5%;
+
+        .form-pair {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 30px;
+          
+          label {
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            color: $second-color;
+            &.image-label {
+              background-color: $third-color;
+              width: 3rem;
+              height: 3rem;
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              font-size: 0.5rem;
+              cursor: pointer;
+              background-size: 100% 100%;
+              background-repeat: no-repeat;
+
+              &.uploaded {
+                background-color: unset;
+                align-items: flex-end;
+
+                span {
+                  background-color: $second-color;
+                  color: $first-color;
+                  width: 100%;
+                  padding: 5px 0;
+                  border-radius: 10px;
+                }
+              }
+            }
+          }
+
+          input {
+            border: none;
+            padding: 1%;
+            width: 10rem;
+            height: 1rem;
+            font-size: 1rem;
+            border-bottom: 1px solid rgb(141, 141, 141);
+
+            &:focus {
+              outline: none;
+              border-bottom: 1px solid $third-color;
+            }
+
+            &[type="file"] {
+              display: none;
+            }
+          }
+
+          select {
+            width: 10rem;
+            height: 2rem;
+            font-size: 1rem;
+            padding: 1%;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid rgb(141, 141, 141);
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+        }
+        button[type="submit"] {
+          font-size: 0.7rem;
+          padding: 2%;
+          width: 40%;
+          color: $first-color;
+        }
+      }
+    }
+  }
+  &--deleteCar {
+    background-color: rgba(0,0,0,0.5);
+
+    .modal-content {
+      background-color: #FFFAFB;
+      border-radius: 20px;
+      width: 17rem;
+      height: 20rem;
+      padding: 2%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .title {
+        text-align: center;
+      }
+      .modal-info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        img {
+          max-height: 9rem;
+          width: 50%;
+        }
+      }
+
+      .buttons-container {
+        width: 100%;
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .btn--delete {
+          color: $first-color;
+        }
+        .cancel-delete {
+          margin-left: 5%;
+          font-size: 0.7rem;
+          border-bottom: 1px solid $second-color;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+.clients {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100vw;
+  min-height: calc(100vh - #{$footer-height});
+  background-color: $first-color;
+  .side-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $second-color;
+    
+    ul {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      li {
+        width: 100%;
+        margin-bottom: 2%;
+        
+        a {
+          width: 100%;
+          display: inline-block;
+          text-align: center;
+          color: $first-color;
+        }
+        .btn {
+          &--addClient {
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 2%;
+            color: $second-color;
+            background-color: $third-color;
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .content {
+    position: relative;
+    width: calc(100vw - 200px); 
+    padding: 2%;
+
+    .clients-table {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border-collapse: collapse;
+      // border: 1px solid rgba($fourth-color, 0.5);
+
+      .thead {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1%;
+        background-color: #fff;
+        
+        .bottons-container {
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          .admin-refresh {
+            color: $second-color;
+            background-color: $first-color;
+            border: 1px solid $second-color;
+            padding: 0 1%;
+            height: 1.5rem;
+            width: 2.5rem;
+            margin: 2px 3px;
+            border-radius: 20px;
+            font-size: 0.4rem;
+            &:hover {
+              transform: unset;
+            }
+          }
+          .admin-save {
+            color: $first-color;
+            font-size: 0.6rem;
+            padding: 0 1%;
+            height: 2rem;
+            width: 5rem;
+            margin: 2px 0;
+            align-self: flex-end;
+            &:hover {
+              transform: unset;
+            }
+          }
+        }
+        .tr {
+          border: 1px solid rgba(43, 44, 40, 0.5);
+        }
+      }
+      
+      .th {
+        width: 25%;
+        font-size: 0.8rem;
+        text-align: center;
+        border-right: 1px solid rgba($fourth-color, 0.5);
+        &:nth-last-child(1) {
+          // border: none;
+          // margin: 0;
+        }
+      }
+      .tr {
+        display: flex;
+        width: 100%;
+        /* border-bottom: 1px solid rgba(43, 44, 40, 0.5); */
+        margin-bottom: 2%;
+
+        &:nth-last-child(1) {
+          margin-bottom: 0;
+        }
+        
+      }
+      .td {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        padding: 1%;
+        font-size: 0.7rem;
+        box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+        
+
+        select {
+          border: none;
+          height: 100%;
+          font-size: 0.7rem;
+          cursor: pointer;
+          background-color: transparent;
+          &:focus {
+            outline: 1px solid rgba(0,0,0,0.5);
+          }
+        }
+      }
+
+      .empty_users_message {
+        text-align: center;
+        color: rgba($fourth-color, 0.5);
+      }
+    }
+  }
+}
