@@ -696,28 +696,28 @@ a {
     .modal--addClient .modal-content {
       background-color: #FFFAFB;
       border-radius: 20px;
-      width: 20rem;
-      height: 20rem;
+      width: 17rem;
+      height: 17rem;
       display: flex;
       justify-content: center;
       align-items: center; }
-      .modal--addClient .modal-content .form-addCar {
+      .modal--addClient .modal-content .form-addClient {
         position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 5%; }
-        .modal--addClient .modal-content .form-addCar .form-pair {
+        .modal--addClient .modal-content .form-addClient .form-pair {
           position: relative;
           display: flex;
           flex-direction: column;
           margin-bottom: 30px; }
-          .modal--addClient .modal-content .form-addCar .form-pair label {
+          .modal--addClient .modal-content .form-addClient .form-pair label {
             font-size: 0.8rem;
             margin-bottom: 5px;
             color: #131515; }
-            .modal--addClient .modal-content .form-addCar .form-pair label.image-label {
+            .modal--addClient .modal-content .form-addClient .form-pair label.image-label {
               background-color: #7DE2D1;
               width: 3rem;
               height: 3rem;
@@ -730,28 +730,28 @@ a {
               cursor: pointer;
               background-size: 100% 100%;
               background-repeat: no-repeat; }
-              .modal--addClient .modal-content .form-addCar .form-pair label.image-label.uploaded {
+              .modal--addClient .modal-content .form-addClient .form-pair label.image-label.uploaded {
                 background-color: unset;
                 align-items: flex-end; }
-                .modal--addClient .modal-content .form-addCar .form-pair label.image-label.uploaded span {
+                .modal--addClient .modal-content .form-addClient .form-pair label.image-label.uploaded span {
                   background-color: #131515;
                   color: #FFFAFB;
                   width: 100%;
                   padding: 5px 0;
                   border-radius: 10px; }
-          .modal--addClient .modal-content .form-addCar .form-pair input {
+          .modal--addClient .modal-content .form-addClient .form-pair input {
             border: none;
             padding: 1%;
             width: 10rem;
             height: 1rem;
             font-size: 1rem;
             border-bottom: 1px solid #8d8d8d; }
-            .modal--addClient .modal-content .form-addCar .form-pair input:focus {
+            .modal--addClient .modal-content .form-addClient .form-pair input:focus {
               outline: none;
               border-bottom: 1px solid #7DE2D1; }
-            .modal--addClient .modal-content .form-addCar .form-pair input[type="file"] {
+            .modal--addClient .modal-content .form-addClient .form-pair input[type="file"] {
               display: none; }
-          .modal--addClient .modal-content .form-addCar .form-pair select {
+          .modal--addClient .modal-content .form-addClient .form-pair select {
             width: 10rem;
             height: 2rem;
             font-size: 1rem;
@@ -759,9 +759,9 @@ a {
             background-color: transparent;
             border: none;
             border-bottom: 1px solid #8d8d8d; }
-            .modal--addClient .modal-content .form-addCar .form-pair select:focus {
+            .modal--addClient .modal-content .form-addClient .form-pair select:focus {
               outline: none; }
-        .modal--addClient .modal-content .form-addCar button[type="submit"] {
+        .modal--addClient .modal-content .form-addClient button[type="submit"] {
           font-size: 0.7rem;
           padding: 2%;
           width: 40%;
