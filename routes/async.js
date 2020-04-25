@@ -97,4 +97,21 @@ router.post('/deleteCar', (req, res, next) => {
     res.send(status);
   })
 });
+
+router.post('/saveClient', async (req, res, next) => {
+  let client_added = false;
+  database.query(`INSERT INTO clients (full_name, license_number, phone_number) VALUES ("${req.body.full_name}", "${req.body.license}", "${req.body.phone_number}")`, (err, response) => {
+    if (err) {
+      throw err;
+    } else {
+      console.log(response);
+      client_added = true;
+    }
+    res.send({
+      client_added: client_added,
+      client_info: { id: response.insertId, ...req.body}
+    });
+  });
+  
+});
 module.exports = router;
