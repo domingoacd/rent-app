@@ -912,7 +912,7 @@ a {
           color: #FFFAFB;
           font-size: 0.8rem;
           padding: 5% 10px; }
-      .clients .content .clients-table .empty_users_message {
+      .clients .content .clients-table .no_clients_message {
         text-align: center;
         color: rgba(43, 44, 40, 0.5); }
 

@@ -69,7 +69,8 @@
             <div class="td">{{phone_number}}</div>
             <div class="td"><button class="btn deleteClient j-deleteClient">Delete</button></div>
           </div>
-
+        {{else}}
+          <h2 class="no_clients_message j-noClients">There are not clients.</h2>
         {{/each}}
       </div>
     </div>

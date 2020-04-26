@@ -6,6 +6,18 @@ const allBtnDeleteClient = document.querySelectorAll('.j-deleteClient');
 const addClientModal = document.querySelector('.j-modal-addClient');
 const deleteClientModal = document.querySelector('.j-modal-deleteClient');
 
+function showMessageOfType(message, type) {
+  const messageContainer = document.querySelector('.j-message-box');
+  messageContainer.classList.add(type, 'show');
+  messageContainer.textContent = message;
+  setTimeout(() => {
+    messageContainer.classList.remove('show');
+  }, 2000);
+  setTimeout(() => {
+    messageContainer.classList.remove(type);
+  }, 2500);
+}
+
 function closeAddClientModal(e) {
   const clieckedTarget = e.target;
   if (clieckedTarget == addClientModal) {
@@ -18,6 +30,7 @@ function InsertClientIntoTable(client) {
   const table_row = document.createElement('tr');
   const table_first_child = table_container.firstChild;
   const keys = Object.keys(client); 
+  const btnDeleteThisClient = document.createElement('button'); 
 
   table_row.classList.add('tr');
   table_row.setAttribute('data-clientId', client.id);
@@ -29,7 +42,10 @@ function InsertClientIntoTable(client) {
     if (index < 4) {
       td.textContent = client[keys[index]];
     } else {
-      td.innerHTML = "<button class='btn deleteClient j-deleteClient'>Delete</div>";
+      btnDeleteThisClient.classList.add('btn', 'deleteClient', 'j-deleteClient');
+      btnDeleteThisClient.textContent = 'Delete';
+      btnDeleteThisClient.addEventListener('click', handleClientToDelete);
+      td.appendChild(btnDeleteThisClient);
     }
     table_row.appendChild(td);
   }
@@ -39,11 +55,16 @@ function InsertClientIntoTable(client) {
 
 function handleClientSavedResponse(response) {
   const { client_info } = response; 
+  const no_clients_message = document.querySelector('.j-noClients');
   console.log(client_info);
   if (response.client_added) {
+    if (no_clients_message) {
+      no_clients_message.style.display = 'none';
+    }
     InsertClientIntoTable(client_info);
+    showMessageOfType('Client added successfully', 'success')
   } else {
-
+    showMessageOfType('There has been an error', 'error')
   }
 }
 
@@ -87,8 +108,9 @@ function removeClientFromTable() {
 function handleDeletedClient(response) {
   if (response.clientDeleted) {
     removeClientFromTable();
+    showMessageOfType('Client deleted', 'success');
   } else {
-
+    showMessageOfType('There has been an error', 'error');
   }
 }
 
