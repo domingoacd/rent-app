@@ -29,7 +29,19 @@ router.route('/cars')
   
 router.route('/clients')
   .get(async (req, res, next) => {
-    res.render('clients');
+
+    await database.query(`SELECT * FROM clients`, (err, result) => {
+      if (err) {
+        console.error(error);
+      } else {
+
+      }
+      
+      res.render('clients', {
+        clients: result
+      });
+
+    });
   });
 
 module.exports = router;

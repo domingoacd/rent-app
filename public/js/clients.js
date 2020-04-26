@@ -29,6 +29,7 @@ function InsertClientIntoTable(client) {
     table_row.appendChild(td);
   }
   table_container.appendChild(table_row);
+  addClientModal.classList.remove('show');
 }
 
 function handleClientSavedResponse(response) {

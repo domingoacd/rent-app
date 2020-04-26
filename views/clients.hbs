@@ -50,12 +50,15 @@
         </div>
       </div>
       <div class="tbody j-tbody">
-        <div class="tr">
-          <div class="td"></div>
-          <div class="td"></div>
-          <div class="td"></div>
-          <div class="td"></div>
-        </div>
+        {{#each clients}}
+          <div class="tr" data-clientId={{id}}>
+            <div class="td">{{full_name}}</div>
+            <div class="td">{{license_number}}</div>
+            <div class="td">{{phone_number}}</div>
+            <div class="td"><button class="btn deleteClient j-deleteClient">Delete</button></div>
+          </div>
+
+        {{/each}}
       </div>
     </div>
   </div>

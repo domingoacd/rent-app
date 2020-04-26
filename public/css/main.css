@@ -908,14 +908,10 @@ a {
         padding: 1%;
         font-size: 0.7rem;
         box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3); }
-        .clients .content .clients-table .td select {
-          border: none;
-          height: 100%;
-          font-size: 0.7rem;
-          cursor: pointer;
-          background-color: transparent; }
-          .clients .content .clients-table .td select:focus {
-            outline: 1px solid rgba(0, 0, 0, 0.5); }
+        .clients .content .clients-table .td .btn.deleteClient {
+          color: #FFFAFB;
+          font-size: 0.8rem;
+          padding: 5% 10px; }
       .clients .content .clients-table .empty_users_message {
         text-align: center;
         color: rgba(43, 44, 40, 0.5); }
