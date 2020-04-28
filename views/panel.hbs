@@ -1,3 +1,34 @@
+<div class="message j-message-box">
+
+</div>
+<div class="modal modal--createRent j-modal-create">
+  <div class="modal-content">
+    <form action="" class="form-createRent j-form-createRent">
+      <div class="form-pair">
+        <label for="car">Car</label>
+        <input type="text" name="car" id="car" required>
+      </div>
+      <div class="form-pair">
+        <label for="client">Client</label>
+        <input type="number" name="client" id="client" required>
+      </div>
+      <div class="form-pair">
+        <label for="creationDate">Creation Date</label>
+        <input type="date" name="creationDate" id="creationDate" required>
+      </div>
+      <div class="form-pair">
+        <label for="returnDate">Return Date</label>
+        <input type="date" name="returnDate" id="returnDate" required>
+      </div>
+      <div class="form-pair">
+        <label for="createdBy">Return Date</label>
+        <input type="date" name="createdBy" id="createdBy" required>
+      </div>
+      
+      <button class="btn j-saveNewCar" type="submit">Add</button>
+    </form>
+  </div>
+</div>
 <div class="panel">
 {{#if approved_user}}
   <div class="side-menu">
@@ -8,7 +39,38 @@
       <li>
         <a href="/panel/clients">Clients</a>
       </li>
+      <li>
+        <button class="btn btn-createRental j-createRental">Create Rental</button>
+      </li>
     </ul>
+  </div>
+  <div class="content">
+    <div class="panel-dashboard j-panelDashboard">
+      {{#each cars}}
+        <div class="card" data-carnumber="{{id}}">
+          {{#if image_name}}
+          <img src="/{{image_name}}" alt="">
+          {{else}}
+          No image
+          {{/if}}
+          <h3 class="car_model">
+            {{model}}
+          </h3>
+          <p class="car_year">
+            Year: <span>{{year}}</span>
+          </p>
+          <p class="car_kilometers">
+            Kilometers: <span>{{kilometers}}</span>
+          </p>
+          <div class="car_availability {{status}}">
+            {{status}}
+          </div>
+          <div class="delete-car j-delete-car {{status}}">
+            Delete Car
+          </div>
+        </div>
+      {{/each}}
+    </div>
   </div>
 {{else}}
   <div class="dashboard__message">
@@ -25,3 +87,4 @@
   </div>
 {{/if}}
 </div>
+<script src="../js/panel.js"></script>
