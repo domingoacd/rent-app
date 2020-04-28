@@ -6,11 +6,15 @@
     <form action="" class="form-createRent j-form-createRent">
       <div class="form-pair">
         <label for="car">Car</label>
-        <input type="text" name="car" id="car" required>
+        <select name="car" id="car">
+          <option disabled selected value="">Select a car</option>
+        </select>
       </div>
       <div class="form-pair">
         <label for="client">Client</label>
-        <input type="number" name="client" id="client" required>
+        <select name="client" id="client" required>
+          <option disabled selected value="">Select a client</option>
+        </select>
       </div>
       <div class="form-pair">
         <label for="creationDate">Creation Date</label>
@@ -21,8 +25,8 @@
         <input type="date" name="returnDate" id="returnDate" required>
       </div>
       <div class="form-pair">
-        <label for="createdBy">Return Date</label>
-        <input type="date" name="createdBy" id="createdBy" required>
+        <label for="createdBy">Created By</label>
+        <input type="text" name="createdBy" id="createdBy" value="{{user_name}}" readonly required>
       </div>
       
       <button class="btn j-saveNewCar" type="submit">Add</button>

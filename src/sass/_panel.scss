@@ -77,6 +77,12 @@
             &[type="file"] {
               display: none;
             }
+
+            &[readonly] {
+              background-color: $second-color;
+              color: $first-color;
+              cursor: not-allowed;
+            }
           }
 
           select {

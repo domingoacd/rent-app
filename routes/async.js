@@ -116,7 +116,6 @@ router.post('/saveClient', async (req, res, next) => {
 });
 
 router.post('/deleteClient', (req, res, next) => {
-  console.log(req);
   database.query(`DELETE FROM clients WHERE id = ${req.body.id}`, (err, result) => {
     let clientDeleted = false;
     if (err) {
@@ -125,6 +124,26 @@ router.post('/deleteClient', (req, res, next) => {
       clientDeleted = true;
     }
     res.send({clientDeleted: clientDeleted});
+  })
+});
+
+router.get('/getNotRentedCars', (req, res, next) => {
+  database.query('SELECT * FROM cars WHERE status = "available"', (err, result) => {
+    if (err) {
+      throw err;
+    } else {
+     res.send({cars: result}); 
+    }
+  });
+});
+
+router.get('/getClients', (req, res, next) => {
+  database.query('SELECT * FROM clients', (err, result) => {
+    if (err) {
+      throw err;
+    } else {
+      res.send({clients: result});
+    }
   })
 });
 module.exports = router;

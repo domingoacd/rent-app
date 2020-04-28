@@ -470,6 +470,10 @@ a {
               border-bottom: 1px solid #7DE2D1; }
             .modal--createRent .modal-content .form-createRent .form-pair input[type="file"] {
               display: none; }
+            .modal--createRent .modal-content .form-createRent .form-pair input[readonly] {
+              background-color: #131515;
+              color: #FFFAFB;
+              cursor: not-allowed; }
           .modal--createRent .modal-content .form-createRent .form-pair select {
             width: 10rem;
             height: 2rem;
