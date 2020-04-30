@@ -18,7 +18,7 @@
       </div>
       <div class="form-pair">
         <label for="creationDate">Creation Date</label>
-        <input type="date" name="creationDate" id="creationDate" required>
+        <input type="text" name="creationDate" id="creationDate" readonly required>
       </div>
       <div class="form-pair">
         <label for="returnDate">Return Date</label>
@@ -26,10 +26,12 @@
       </div>
       <div class="form-pair">
         <label for="createdBy">Created By</label>
-        <input type="text" name="createdBy" id="createdBy" value="{{user_name}}" readonly required>
+        <select name="createdBy" id="createdBy" readonly required disabled>
+          <option value="{{user}}">{{user_name}}</option>
+        </select>
       </div>
       
-      <button class="btn j-saveNewCar" type="submit">Add</button>
+      <button class="btn j-saveRental" type="submit">Create</button>
     </form>
   </div>
 </div>

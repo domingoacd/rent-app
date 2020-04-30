@@ -146,4 +146,18 @@ router.get('/getClients', (req, res, next) => {
     }
   })
 });
+
+router.post('/createRental', (req, res, next) => {
+  console.log(req.body);
+  database.query(
+    `INSERT INTO rents (car_id, client_id, user_rental_id, rental_date, return_date) values (${req.body.car}, ${req.body.client}, ${req.body.createdBy}, 2020-04-29, ${req.body.returnDate})`,
+    (err, result) => {
+      if (err) {
+        throw err;
+      } else {
+        console.log(result);
+      }
+    }
+  );
+});
 module.exports = router;

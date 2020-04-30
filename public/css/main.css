@@ -484,6 +484,10 @@ a {
             border-bottom: 1px solid #8d8d8d; }
             .modal--createRent .modal-content .form-createRent .form-pair select:focus {
               outline: none; }
+            .modal--createRent .modal-content .form-createRent .form-pair select[readonly] {
+              background-color: #131515;
+              color: #FFFAFB;
+              cursor: not-allowed; }
         .modal--createRent .modal-content .form-createRent button[type="submit"] {
           font-size: 0.7rem;
           padding: 2%;
