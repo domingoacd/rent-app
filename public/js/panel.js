@@ -82,8 +82,34 @@ function showCreateRentalModal(e) {
   createRentalModal.classList.add('show');
 }
 
-function handdleSavedRental(savedRental) {
-  console.log(savedRental);
+function insertRentalCard() {
+  const dashboard = document.querySelector('.j-panelDashboard');
+  const carId = document.querySelector('select#car').value; 
+  const cardContainer = document.createElement('div');
+  const cardData = {
+    car: document.querySelector(`select#car option[value="${carId}"]`),
+    client: document.querySelector('select#client').value,
+    creationDate: document.querySelector('input#creationDate').value,
+    returnDate: document.querySelector('input#returnDate').value,
+    createdBy: document.querySelector('select#createdBy').value
+  };
+  const cardImage = document.createElement('img');
+  cardImage.src = cardData.car.dataset.image;
+  cardContainer.classList.add('card');
+
+  cardContainer.appendChild(cardImage);
+  dashboard.appendChild(cardContainer);
+  
+}
+
+function handdleSavedRental(response) {
+  const {rentalWasCreated} = response;
+   
+  if (rentalWasCreated) {
+    insertRentalCard();
+  } else {
+
+  }
 }
 
 function saveRental(e) {
