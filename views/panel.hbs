@@ -35,6 +35,30 @@
     </form>
   </div>
 </div>
+<div class="modal modal--filterRents j-modal-filter">
+  <div class="modal-content">
+    <form action="" class="form-filterRents j-form-filterRents">
+      <div class="form-pair">
+        <label for="car_model">Car model</label>
+        <input type="text" name="car_model" />
+      </div>
+      <div class="form-pair">
+        <label for="car_year">Car year</label>
+        <input type="text" name="car_year">
+      </div>
+      <div class="form-pair">
+        <label for="client_name">Client name</label>
+        <input type="text" name="client_name" id="client_name" >
+      </div>
+      <div class="form-pair">
+        <label for="license_number">License number</label>
+        <input type="text" name="license_number" id="license_number">
+      </div>
+      
+      <button class="btn j-searchRentals" type="submit">Filter</button>
+    </form>
+  </div>
+</div>
 <div class="panel">
 {{#if approved_user}}
   <div class="side-menu">
@@ -52,30 +76,45 @@
   </div>
   <div class="content">
     <div class="panel-dashboard j-panelDashboard">
-      {{#each cars}}
-        <div class="card" data-carnumber="{{id}}">
-          {{#if image_name}}
-          <img src="/{{image_name}}" alt="">
-          {{else}}
-          No image
-          {{/if}}
-          <h3 class="car_model">
-            {{model}}
-          </h3>
-          <p class="car_year">
-            Year: <span>{{year}}</span>
-          </p>
-          <p class="car_kilometers">
-            Kilometers: <span>{{kilometers}}</span>
-          </p>
-          <div class="car_availability {{status}}">
-            {{status}}
-          </div>
-          <div class="delete-car j-delete-car {{status}}">
-            Delete Car
-          </div>
+      <div class="panel-dashboard__upper">
+        <div class="btn btn--filter j-filter">Filter</div>
+        <div class="pair">
+          <label for="sort">Sort by:</label>
+          <select name="sort" id="sort">
+            <option value="">Creation date</option>
+            <option value="">Return date</option>
+          </select>
         </div>
-      {{/each}}
+      </div>
+      <div class="panel-dashboard__bottom">
+        {{#each rentals}}
+          <div class="card j-card" data-rentalnumber="{{rent_id}}">
+            {{#if image_name}}
+            <img src="/{{image_name}}" alt="">
+            {{else}}
+            No image
+            {{/if}}
+            <h3 class="car_model j-carModel">
+              {{model}}
+            </h3>
+            <p class="car_year">
+              Year: <span class="j-carYear">{{year}}</span>
+            </p>
+            <p class="car_kilometers">
+              Kilometers: <span>{{kilometers}}</span>
+            </p>
+            <p class="client_name">
+              Client: <span class="j-clientName">{{full_name}}</span>
+            </p>
+            <p class="license_number">
+              License: <span class="j-licenseNumber">{{license_number}}</span>
+            </p>
+            <div class="delete-car j-delete-car {{status}}">
+              Return rental
+            </div>
+          </div>
+        {{/each}}
+      </div>
     </div>
   </div>
 {{else}}

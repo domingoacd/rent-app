@@ -1,6 +1,9 @@
 const btnCreateRental = document.querySelector('.j-createRental');
 const btnSaveRental = document.querySelector('.j-saveRental');
+const btnFilterRentals = document.querySelector('.j-filter');
+const btnShowFilteredRentals = document.querySelector('.j-searchRentals');
 const createRentalModal = document.querySelector('.j-modal-create');
+const filterRentalsModal = document.querySelector('.j-modal-filter');
 const carSelect = document.querySelector('select#car');
 const clientSelect = document.querySelector('select#client');
 
@@ -102,7 +105,7 @@ function insertRentalCard() {
   
 }
 
-function handdleSavedRental(response) {
+function handleSavedRental(response) {
   const {rentalWasCreated} = response;
    
   if (rentalWasCreated) {
@@ -132,9 +135,73 @@ function saveRental(e) {
   })
     .then(data => data.json())
     .catch(err => console.log(err))
-    .then(handdleSavedRental);
+    .then(handleSavedRental);
 }
 
+function showFilterModal(e) {
+  const filterModal = document.querySelector('.j-modal-filter');
+  filterModal.classList.add('show');
+}
+
+function closeFilterRentalsModal(e) {
+    const clieckedTarget = e.target;
+    if (clieckedTarget == filterRentalsModal) {
+      filterRentalsModal.classList.remove('show');
+      filterRentalsModal.querySelectorAll('input').forEach(input => input.value="");
+    }
+}
+
+function rentalMatchsFilter(rental, filter) {
+  const rentalCarModel = rental.querySelector('.j-carModel').textContent.toLowerCase().trim(); 
+  const rentalCarYear = rental.querySelector('.j-carYear').textContent; 
+  const rentalClientName = rental.querySelector('.j-clientName').textContent.toLowerCase().trim(); 
+  const rentalLicenseNumber = rental.querySelector('.j-licenseNumber').textContent; 
+
+  return (
+    (filter.carModel == '' || filter.carModel == rentalCarModel) &&
+    (filter.carYear == '' || filter.carYear == rentalCarYear) &&
+    (filter.clientName == '' || filter.clientName == rentalClientName) &&
+    (filter.licenseNumber == '' || filter.licenseNumber == rentalLicenseNumber)
+  ); 
+  
+}
+
+function handleFilteredRentals(filteredRentals) {
+  const allRentals = document.querySelectorAll('.j-card');
+  allRentals.forEach(rental => {
+    const isTheSame = filteredRentals.some(filtered => filtered == rental); 
+    
+    if (isTheSame) {
+      rental.classList.remove('hide');
+    } else {
+      rental.classList.add('hide');
+    }
+  });
+}
+
+function filterRentals(e) {
+  e.preventDefault();
+  const allRentals = Array.from(document.querySelectorAll('.j-card'));
+  const userFilter = {
+    carModel: 
+      document.querySelector('.j-form-filterRents [name=car_model]').value.toLowerCase().trim(),
+    carYear: 
+      document.querySelector('.j-form-filterRents [name=car_year]').value.trim(),
+    clientName: 
+      document.querySelector('.j-form-filterRents [name=client_name]').value.toLowerCase().trim(),
+    licenseNumber: 
+      document.querySelector('.j-form-filterRents [name=license_number]').value.trim()
+  }
+
+  const filteredRentals = allRentals.filter((rental) => {
+    return rentalMatchsFilter(rental, userFilter)
+  });
+
+  handleFilteredRentals(filteredRentals)
+}
 btnCreateRental.addEventListener('click', showCreateRentalModal);
 createRentalModal.addEventListener('click', closeCreateRentalModal);
 btnSaveRental.addEventListener('click', saveRental);
+btnFilterRentals.addEventListener('click', showFilterModal);
+filterRentalsModal.addEventListener('click', closeFilterRentalsModal);
+btnShowFilteredRentals.addEventListener('click', filterRentals);

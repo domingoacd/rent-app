@@ -493,6 +493,89 @@ a {
           padding: 2%;
           width: 40%;
           color: #FFFAFB; }
+  .modal--filterRents {
+    background-color: rgba(0, 0, 0, 0.5); }
+    .modal--filterRents .modal-content {
+      background-color: #FFFAFB;
+      border-radius: 20px;
+      width: 20rem;
+      height: 20rem;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .modal--filterRents .modal-content .form-filterRents {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 5%; }
+        .modal--filterRents .modal-content .form-filterRents .form-pair {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 30px; }
+          .modal--filterRents .modal-content .form-filterRents .form-pair label {
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            color: #131515; }
+            .modal--filterRents .modal-content .form-filterRents .form-pair label.image-label {
+              background-color: #7DE2D1;
+              width: 3rem;
+              height: 3rem;
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              font-size: 0.5rem;
+              cursor: pointer;
+              background-size: 100% 100%;
+              background-repeat: no-repeat; }
+              .modal--filterRents .modal-content .form-filterRents .form-pair label.image-label.uploaded {
+                background-color: unset;
+                align-items: flex-end; }
+                .modal--filterRents .modal-content .form-filterRents .form-pair label.image-label.uploaded span {
+                  background-color: #131515;
+                  color: #FFFAFB;
+                  width: 100%;
+                  padding: 5px 0;
+                  border-radius: 10px; }
+          .modal--filterRents .modal-content .form-filterRents .form-pair input {
+            border: none;
+            padding: 1%;
+            width: 10rem;
+            height: 1rem;
+            font-size: 1rem;
+            border-bottom: 1px solid #8d8d8d; }
+            .modal--filterRents .modal-content .form-filterRents .form-pair input:focus {
+              outline: none;
+              border-bottom: 1px solid #7DE2D1; }
+            .modal--filterRents .modal-content .form-filterRents .form-pair input[type="file"] {
+              display: none; }
+            .modal--filterRents .modal-content .form-filterRents .form-pair input[readonly] {
+              background-color: #131515;
+              color: #FFFAFB;
+              cursor: not-allowed; }
+          .modal--filterRents .modal-content .form-filterRents .form-pair select {
+            width: 10rem;
+            height: 2rem;
+            font-size: 1rem;
+            padding: 1%;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #8d8d8d; }
+            .modal--filterRents .modal-content .form-filterRents .form-pair select:focus {
+              outline: none; }
+            .modal--filterRents .modal-content .form-filterRents .form-pair select[readonly] {
+              background-color: #131515;
+              color: #FFFAFB;
+              cursor: not-allowed; }
+        .modal--filterRents .modal-content .form-filterRents button[type="submit"] {
+          font-size: 0.7rem;
+          padding: 2%;
+          width: 40%;
+          color: #FFFAFB; }
 
 .panel {
   display: flex;
@@ -548,49 +631,75 @@ a {
     width: 100%;
     height: 100%;
     padding-left: 200px; }
-    .panel .content .panel_dashboard {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 8rem));
-      justify-content: space-evenly;
-      align-items: center;
-      gap: 15px;
-      padding: 5%; }
-      .panel .content .panel_dashboard .card {
-        position: relative;
-        height: 350px;
+    .panel .content .panel-dashboard {
+      display: flex;
+      flex-direction: column; }
+      .panel .content .panel-dashboard__upper {
+        width: 100%;
+        padding: 1% 2%;
         display: flex;
-        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center; }
+        .panel .content .panel-dashboard__upper .btn--filter {
+          color: #FFFAFB;
+          height: 1.4rem;
+          width: 3rem;
+          font-size: 0.7rem; }
+        .panel .content .panel-dashboard__upper .pair {
+          margin: 0 10px;
+          font-size: 0.7rem; }
+          .panel .content .panel-dashboard__upper .pair select {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #8d8d8d; }
+            .panel .content .panel-dashboard__upper .pair select:focus {
+              outline: none; }
+      .panel .content .panel-dashboard__bottom {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 8rem));
         justify-content: space-evenly;
         align-items: center;
-        border-radius: 20px;
-        padding: 1% 4%;
-        text-align: center;
-        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
-        border: 1px solid #13151566; }
-        .panel .content .panel_dashboard .card img {
-          width: auto;
-          height: 25%; }
-        .panel .content .panel_dashboard .card .car_model {
-          width: 108%;
-          border: 1px solid #000;
-          border-right: none;
-          border-left: none;
-          color: #fffafb;
-          background-color: #131515; }
-        .panel .content .panel_dashboard .card .car_year, .panel .content .panel_dashboard .card .car_kilometers {
+        gap: 15px;
+        padding: 5%; }
+        .panel .content .panel-dashboard__bottom .card {
+          position: relative;
+          height: 350px;
           display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
           align-items: center;
-          font-size: 0.7rem; }
-          .panel .content .panel_dashboard .card .car_year span, .panel .content .panel_dashboard .card .car_kilometers span {
-            font-weight: 100;
-            font-size: 0.6rem;
-            margin-left: 5%; }
-        .panel .content .panel_dashboard .card .delete-car {
-          font-size: 0.5rem;
-          text-decoration: underline;
-          cursor: pointer; }
-          .panel .content .panel_dashboard .card .delete-car.rented {
-            visibility: hidden; }
+          border-radius: 20px;
+          padding: 1% 4%;
+          text-align: center;
+          box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+          border: 1px solid #13151566; }
+          .panel .content .panel-dashboard__bottom .card.hide {
+            display: none; }
+          .panel .content .panel-dashboard__bottom .card img {
+            width: auto;
+            height: 25%; }
+          .panel .content .panel-dashboard__bottom .card .car_model {
+            width: 108%;
+            border: 1px solid #000;
+            border-right: none;
+            border-left: none;
+            color: #fffafb;
+            background-color: #131515; }
+          .panel .content .panel-dashboard__bottom .card .car_year, .panel .content .panel-dashboard__bottom .card .car_kilometers, .panel .content .panel-dashboard__bottom .card .client_name, .panel .content .panel-dashboard__bottom .card .license_number {
+            display: flex;
+            align-items: center;
+            font-size: 0.7rem; }
+            .panel .content .panel-dashboard__bottom .card .car_year span, .panel .content .panel-dashboard__bottom .card .car_kilometers span, .panel .content .panel-dashboard__bottom .card .client_name span, .panel .content .panel-dashboard__bottom .card .license_number span {
+              font-weight: 100;
+              font-size: 0.6rem;
+              margin-left: 5%; }
+          .panel .content .panel-dashboard__bottom .card .delete-car {
+            font-size: 0.5rem;
+            text-decoration: underline;
+            cursor: pointer; }
+            .panel .content .panel-dashboard__bottom .card .delete-car.rented {
+              visibility: hidden; }
 
 .message {
   position: fixed;
