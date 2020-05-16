@@ -157,7 +157,10 @@ router.post('/createRental', (req, res, next) => {
       } else {
         rentalCreated = true;
       }
-      res.send({rentalWasCreated: rentalCreated});
+      res.send({
+        rentalWasCreated: rentalCreated,
+        rentalId: result.insertId
+      });
     }
   );
 });

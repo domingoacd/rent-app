@@ -85,8 +85,31 @@ function showCreateRentalModal(e) {
   createRentalModal.classList.add('show');
 }
 
-function insertRentalCard() {
-  const dashboard = document.querySelector('.j-panelDashboard');
+function setCarInfoIntoCard(info, card) {
+  const carInfo = info.car.textContent.split('-');
+
+  for(let index = 0; index < carInfo.length; index++) {
+    let infoContainer = '';
+
+    if (index == 0) {
+      infoContainer = document.createElement('h3');
+      infoContainer.classList.add('car_model', 'j-carModel');
+      infoContainer.textContent = carInfo[index];
+    } else if (index == 1) {
+      infoContainer = document.createElement('p');
+      infoContainer.classList.add('car_year');
+      infoContainer.innerHTML = `Year: <span class="j-carYear">${carInfo[index]}</span>`
+    } else {
+      infoContainer = document.createElement('p');
+      infoContainer.classList.add('car_kilometers');
+      infoContainer.innerHTML = `Kilometers: <span>${carInfo[index]}</span>`
+    }
+    card.appendChild(infoContainer);
+  }
+}
+
+function insertRentalCard(rentalId) {
+  const dashboard = document.querySelector('.j-cardsContainer');
   const carId = document.querySelector('select#car').value; 
   const cardContainer = document.createElement('div');
   const cardData = {
@@ -97,19 +120,24 @@ function insertRentalCard() {
     createdBy: document.querySelector('select#createdBy').value
   };
   const cardImage = document.createElement('img');
+  
   cardImage.src = cardData.car.dataset.image;
-  cardContainer.classList.add('card');
-
+  cardContainer.classList.add('card', 'j-card');
+  cardContainer.setAttribute('data-rentalnumber', rentalId);
+  
   cardContainer.appendChild(cardImage);
+  setCarInfoIntoCard(cardData, cardContainer);
+
+  
   dashboard.appendChild(cardContainer);
   
 }
 
 function handleSavedRental(response) {
-  const {rentalWasCreated} = response;
+  const {rentalWasCreated, rentalId} = response;
    
   if (rentalWasCreated) {
-    insertRentalCard();
+    insertRentalCard(rentalId);
   } else {
 
   }
@@ -125,7 +153,6 @@ function saveRental(e) {
     returnDate: document.querySelector('input#returnDate').value,
     createdBy: document.querySelector('select#createdBy').value
   }
-  console.log(data);
   fetch(url, {
     method: 'POST',
     headers: {
