@@ -7,6 +7,17 @@ const filterRentalsModal = document.querySelector('.j-modal-filter');
 const carSelect = document.querySelector('select#car');
 const clientSelect = document.querySelector('select#client');
 
+function showMessageOfType(message, type) {
+  const messageContainer = document.querySelector('.j-message-box');
+  messageContainer.classList.add(type, 'show');
+  messageContainer.textContent = message;
+  setTimeout(() => {
+    messageContainer.classList.remove('show');
+  }, 2000);
+  setTimeout(() => {
+    messageContainer.classList.remove(type);
+  }, 2500);
+}
 function resetModalOptions() {
   carSelect.innerHTML = "<option disabled selected value=''>Select a car</option>";
   clientSelect.innerHTML = "<option disabled selected value=''>Select a client</option>";
@@ -15,7 +26,6 @@ function resetModalOptions() {
 function closeCreateRentalModal(e) {
   const clieckedTarget = e.target;
   if (clieckedTarget == createRentalModal) {
-    resetModalOptions();
     createRentalModal.classList.remove('show');
   }
 }
@@ -79,6 +89,7 @@ function insertCurrentDate() {
 }
 
 function showCreateRentalModal(e) {
+  resetModalOptions();
   getCarsToInsert();
   getClientsToInsert();
   insertCurrentDate();
@@ -87,6 +98,7 @@ function showCreateRentalModal(e) {
 
 function setCarInfoIntoCard(info, card) {
   const carInfo = info.car.textContent.split('-');
+  let kilometers = '';
 
   for(let index = 0; index < carInfo.length; index++) {
     let infoContainer = '';
@@ -96,14 +108,33 @@ function setCarInfoIntoCard(info, card) {
       infoContainer.classList.add('car_model', 'j-carModel');
       infoContainer.textContent = carInfo[index];
     } else if (index == 1) {
-      infoContainer = document.createElement('p');
-      infoContainer.classList.add('car_year');
-      infoContainer.innerHTML = `Year: <span class="j-carYear">${carInfo[index]}</span>`
-    } else {
+      kilometers = carInfo[index].toLowerCase().replace('km', '')
       infoContainer = document.createElement('p');
       infoContainer.classList.add('car_kilometers');
-      infoContainer.innerHTML = `Kilometers: <span>${carInfo[index]}</span>`
+      infoContainer.innerHTML = `Kilometers: <span>${kilometers}</span>`;
+
+    } else {
+      infoContainer = document.createElement('p');
+      infoContainer.classList.add('car_year');
+      infoContainer.innerHTML = `Year: <span class="j-carYear">${carInfo[index]}</span>`;
     }
+    card.appendChild(infoContainer);
+  }
+}
+function setClientInfoIntoCard(info, card) {
+  const clientInfo = info.client.textContent.split('-');
+  let licenseNumber = '';
+  for (let index = 0; index < clientInfo.length; index++) {
+    const infoContainer = document.createElement('p');
+    if (index ==0) {
+      infoContainer.classList.add('client_name');
+      infoContainer.innerHTML = `Client: <span class='j-clientName'>${clientInfo[index]}</span>`
+    } else {
+      licenseNumber = clientInfo[index].split(':')[1];
+      infoContainer.classList.add('license_number')
+      infoContainer.innerHTML = `License: <span class='j-licenseNumber'>${licenseNumber}</span>`;
+    }
+    
     card.appendChild(infoContainer);
   }
 }
@@ -111,10 +142,11 @@ function setCarInfoIntoCard(info, card) {
 function insertRentalCard(rentalId) {
   const dashboard = document.querySelector('.j-cardsContainer');
   const carId = document.querySelector('select#car').value; 
+  const clientId = document.querySelector('select#client').value; 
   const cardContainer = document.createElement('div');
   const cardData = {
     car: document.querySelector(`select#car option[value="${carId}"]`),
-    client: document.querySelector('select#client').value,
+    client: document.querySelector(`select#client option[value="${clientId}"]`),
     creationDate: document.querySelector('input#creationDate').value,
     returnDate: document.querySelector('input#returnDate').value,
     createdBy: document.querySelector('select#createdBy').value
@@ -124,13 +156,13 @@ function insertRentalCard(rentalId) {
   cardImage.src = cardData.car.dataset.image;
   cardContainer.classList.add('card', 'j-card');
   cardContainer.setAttribute('data-rentalnumber', rentalId);
-  
+
   cardContainer.appendChild(cardImage);
   setCarInfoIntoCard(cardData, cardContainer);
-
+  setClientInfoIntoCard(cardData, cardContainer);
   
-  dashboard.appendChild(cardContainer);
-  
+  dashboard.insertBefore(cardContainer, dashboard.firstChild);
+  createRentalModal.classList.remove('show');
 }
 
 function handleSavedRental(response) {
@@ -138,8 +170,9 @@ function handleSavedRental(response) {
    
   if (rentalWasCreated) {
     insertRentalCard(rentalId);
+    showMessageOfType('New rental added!', 'success');
   } else {
-
+    showMessageOfType(`Error, rental wasn't created, 'error`);
   }
 }
 
