@@ -366,7 +366,7 @@
             background-color: #131515;
           }
   
-          .car_year, .car_kilometers, .client_name, .license_number {
+          .car_year, .car_kilometers, .client_name, .license_number, .rental_date, .return_date {
             display: flex;
             align-items: center;
             font-size: 0.7rem;
@@ -375,6 +375,11 @@
               font-size: 0.6rem;
               margin-left: 5%;
             }
+          }
+          .rental_date, .return_date {
+            flex-direction: column;
+            width: 80%;
+            text-align: center;
           }
   
           .delete-car {

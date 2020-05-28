@@ -139,6 +139,25 @@ function setClientInfoIntoCard(info, card) {
   }
 }
 
+function setDatesIntoCard(data, card) {
+  const returnDateContainer = document.createElement('p');
+  const creationDateContainer = document.createElement('p');
+  let {returnDate, creationDate} = data;
+
+  returnDate = `${returnDate.split('-')[2]}-${returnDate.split('-')[1]}-${returnDate.split('-')[0]}`;
+  creationDate = 
+    `${creationDate.split('/')[0]}-${creationDate.split('/')[1]}-${creationDate.split('/')[2]}`;
+
+    creationDateContainer.classList.add('rental_date');
+    returnDateContainer.classList.add('return_date');
+
+    creationDateContainer.innerHTML =`Rental date: <span class="j-returnDate">${creationDate}</span>`;
+    returnDateContainer.innerHTML =`Return: <span class="j-returnDate">${returnDate}</span>`;
+
+  card.appendChild(returnDateContainer);
+  card.appendChild(creationDateContainer);
+}
+
 function insertRentalCard(rentalId) {
   const dashboard = document.querySelector('.j-cardsContainer');
   const carId = document.querySelector('select#car').value; 
@@ -160,6 +179,7 @@ function insertRentalCard(rentalId) {
   cardContainer.appendChild(cardImage);
   setCarInfoIntoCard(cardData, cardContainer);
   setClientInfoIntoCard(cardData, cardContainer);
+  setDatesIntoCard(cardData, cardContainer);
   
   dashboard.insertBefore(cardContainer, dashboard.firstChild);
   createRentalModal.classList.remove('show');

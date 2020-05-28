@@ -686,14 +686,18 @@ a {
             border-left: none;
             color: #fffafb;
             background-color: #131515; }
-          .panel .content .panel-dashboard__bottom .card .car_year, .panel .content .panel-dashboard__bottom .card .car_kilometers, .panel .content .panel-dashboard__bottom .card .client_name, .panel .content .panel-dashboard__bottom .card .license_number {
+          .panel .content .panel-dashboard__bottom .card .car_year, .panel .content .panel-dashboard__bottom .card .car_kilometers, .panel .content .panel-dashboard__bottom .card .client_name, .panel .content .panel-dashboard__bottom .card .license_number, .panel .content .panel-dashboard__bottom .card .rental_date, .panel .content .panel-dashboard__bottom .card .return_date {
             display: flex;
             align-items: center;
             font-size: 0.7rem; }
-            .panel .content .panel-dashboard__bottom .card .car_year span, .panel .content .panel-dashboard__bottom .card .car_kilometers span, .panel .content .panel-dashboard__bottom .card .client_name span, .panel .content .panel-dashboard__bottom .card .license_number span {
+            .panel .content .panel-dashboard__bottom .card .car_year span, .panel .content .panel-dashboard__bottom .card .car_kilometers span, .panel .content .panel-dashboard__bottom .card .client_name span, .panel .content .panel-dashboard__bottom .card .license_number span, .panel .content .panel-dashboard__bottom .card .rental_date span, .panel .content .panel-dashboard__bottom .card .return_date span {
               font-weight: 100;
               font-size: 0.6rem;
               margin-left: 5%; }
+          .panel .content .panel-dashboard__bottom .card .rental_date, .panel .content .panel-dashboard__bottom .card .return_date {
+            flex-direction: column;
+            width: 80%;
+            text-align: center; }
           .panel .content .panel-dashboard__bottom .card .delete-car {
             font-size: 0.5rem;
             text-decoration: underline;

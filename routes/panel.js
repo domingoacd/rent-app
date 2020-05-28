@@ -14,7 +14,10 @@ router.get('/', async (req, res, next) => {
       JOIN cars ON rents.car_id = cars.id
       JOIN clients ON rents.client_id = clients.id
     `);
-    console.log(rentals);
+    rentals.forEach(rental => {
+      rental.rental_date = `${rental.rental_date.getDate()}-${rental.rental_date.getMonth() + 1}-${rental.rental_date.getFullYear()}`;
+      rental.return_date = `${rental.return_date.getDate()}-${rental.return_date.getMonth() + 1}-${rental.return_date.getFullYear()}`;
+    });
     res.render("panel", {
       user: req.session.user,
       user_name : req.session.user_name,
