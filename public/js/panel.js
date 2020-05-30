@@ -283,36 +283,44 @@ function filterRentals(e) {
 
 function getCardWithSmallerDate(card1, card2, dateField) {
   const firstDate = card1.querySelector(`${dateField}`).textContent.split('-').map(el => Number(el));
-  const secondDate = card1.querySelector(`${dateField}`).textContent.split('-').map(el => Number(el));
+  const secondDate = 
+          card2 ? 
+          card2.querySelector(`${dateField}`).textContent.split('-').map(el => Number(el)) 
+          : false;
   let cardWithSmallerDate = '';
-  if(firstDate[2] > secondDate[2]) {
-    cardWithSmallerDate = card2;
-  } else if (secondDate[2] > firstDate[2] ) {
-    cardWithSmallerDate = card1;
-  } else {
-    if (firstDate[1] > secondDate[1]) {
+  if (secondDate) {
+    if(firstDate[2] > secondDate[2]) {
       cardWithSmallerDate = card2;
-    } else if (secondDate[1] > firstDate[1]) {
+    } else if (secondDate[2] > firstDate[2] ) {
       cardWithSmallerDate = card1;
     } else {
-      if (firstDate[0] > secondDate[0]) {
+      if (firstDate[1] > secondDate[1]) {
         cardWithSmallerDate = card2;
-      } else {
+      } else if (secondDate[1] > firstDate[1]) {
         cardWithSmallerDate = card1;
+      } else {
+        if (firstDate[0] > secondDate[0]) {
+          cardWithSmallerDate = card2;
+        } else {
+          cardWithSmallerDate = card1;
+        }
       }
     }
+  } else {
+    cardWithSmallerDate = card1;
   }
-
   return cardWithSmallerDate;
 }
 
 function insertSortedRentals(rentals) {
   const container = document.querySelector('.j-cardsContainer');
-  rentals.forEach(rental => container.appendChild(rental));
+  rentals.forEach(rental => {
+    container.appendChild(rental)
+  });
 }
 function sortRentals(e) {
   const sortBy = e.target.value; 
-  const rentals = document.querySelectorAll('.j-card');
+  const rentals = Array.from(document.querySelectorAll('.j-card'));
   const sortParams = {
     return_date: '.j-returnDate',
     creation_date: '.j-rentalDate'
@@ -323,19 +331,20 @@ function sortRentals(e) {
   let nextCard = '';
   rentals.forEach(rental => rental.remove());
 
-  for (let currentPosition = 0; currentPosition < rentals.length; currentPosition++) {
+  for (let currentPosition = 0; currentPosition < rentals.length; currentPosition) {
     currentCard = rentals[currentPosition];
-    for (let nextPosition = currentPosition + 1; nextPosition < rentals.length; nextPosition++) {
+    for (let nextPosition = currentPosition + 1; nextPosition <= rentals.length; nextPosition++) {
       nextCard = rentals[nextPosition];
       currentCard = getCardWithSmallerDate(currentCard, nextCard, dateToCompare);
-      if (nextPosition == rentals.length -1) {
+      if (nextPosition == rentals.length -1 || rentals.length == 1) {
         sortedCards.push(currentCard);
+        rentals.splice(rentals.indexOf(currentCard), 1);
+        currentPosition = 0;
       }
     }
   }
-  setTimeout(() => {
-    insertSortedRentals(sortedCards);
-  }, 1000);
+  
+  insertSortedRentals(sortedCards);
   console.log(sortedCards);
 }
 btnCreateRental.addEventListener('click', showCreateRentalModal);
