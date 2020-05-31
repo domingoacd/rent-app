@@ -83,11 +83,19 @@ function getClientsToInsert() {
     .then(insertClients);
 }
 
+function formatMinDate(date) {
+  return date.split('/').map(number => {
+    return number.length == 1 ? `0${number}` : number;
+  }).reverse().join('-');
+}
+
 function insertCurrentDate() {
   const dateInput = document.querySelector('#creationDate');
+  const returnDateInput = document.querySelector('#returnDate');
   const currentDate = new Date().toLocaleDateString();
-
+  const minDate = formatMinDate(currentDate);
   dateInput.value = currentDate;
+  returnDateInput.min = minDate;
 }
 
 function showCreateRentalModal(e) {
