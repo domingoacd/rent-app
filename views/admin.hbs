@@ -1,4 +1,4 @@
-<div class="admin">
+<div class="admin row d-flex justify-content-center align-items-center">
   {{#if error}}
     <div class="message error show">
       {{#if unknown_error}}
@@ -8,12 +8,12 @@
       {{/if}}
     </div>
   {{/if}}
-  <form action="" class="admin-form" method="POST">
-    <div class="form-pair">
+  <form action="" class="admin-form col-10 col-md-8 d-flex flex-column justify-content-center align-items-center" method="POST">
+    <div class="form-group d-flex flex-column">
       <label for="username">User</label>
       <input type="text" name="username" required>
     </div>
-    <div class="form-pair">
+    <div class="form-group d-flex flex-column">
       <label for="password">Password</label>
       <input type="password" name="password" required>
     </div>

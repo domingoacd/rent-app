@@ -1,75 +1,83 @@
 .admin {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
   height: calc(100vh - #{$footer-height});
-  background-color: $second-color;
-  .admin-form {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
-    min-width: 260px;
-    max-width: 460px;
-    // height: 80%;
-    // min-height: 270px;
-    // max-height: 470px;
-    border-radius: 2px;
-    padding: 5%;
-    box-shadow: 0px 0px 5px $first-color;
-    background-color: $first-color;
-    .form-pair {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 30px;
-      
-      label {
-        font-size: 0.8rem;
-        margin-bottom: 5px;
-        color: $second-color;
-      }
+  min-height: 20rem;
 
-      input {
-        border: none;
-        padding: 1%;
-        width: 10rem;
-        height: 1rem;
-        font-size: 1rem;
-        border-bottom: 1px solid rgb(141, 141, 141);
-
-        &:focus {
-          outline: none;
-          border-bottom: 1px solid $third-color;
-        }
-      }
-
-      select {
-        width: 10rem;
-        height: 2rem;
-        font-size: 1rem;
-        padding: 1%;
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid rgb(141, 141, 141);
-
-        &:focus {
-          outline: none;
-        }
-      }
-
-    }
-    button[type="submit"] {
-      position: absolute;
-      bottom: -7%;
-      font-size: 0.7rem;
-      padding: 2%;
-      width: 40%;
-      color: $second-color;
-      background-color: $third-color;
-      box-shadow: 0px 0px 5px $first-color;
-    }
+  form {
+    max-width: 20rem;
   }
 }
+// .admin {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100vw;
+//   height: calc(100vh - #{$footer-height});
+//   background-color: $second-color;
+//   .admin-form {
+//     position: relative;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     width: 40%;
+//     min-width: 260px;
+//     max-width: 460px;
+//     // height: 80%;
+//     // min-height: 270px;
+//     // max-height: 470px;
+//     border-radius: 2px;
+//     padding: 5%;
+//     box-shadow: 0px 0px 5px $first-color;
+//     background-color: $first-color;
+//     .form-pair {
+//       display: flex;
+//       flex-direction: column;
+//       margin-bottom: 30px;
+      
+//       label {
+//         font-size: 0.8rem;
+//         margin-bottom: 5px;
+//         color: $second-color;
+//       }
+
+//       input {
+//         border: none;
+//         padding: 1%;
+//         width: 10rem;
+//         height: 1rem;
+//         font-size: 1rem;
+//         border-bottom: 1px solid rgb(141, 141, 141);
+
+//         &:focus {
+//           outline: none;
+//           border-bottom: 1px solid $third-color;
+//         }
+//       }
+
+//       select {
+//         width: 10rem;
+//         height: 2rem;
+//         font-size: 1rem;
+//         padding: 1%;
+//         background-color: transparent;
+//         border: none;
+//         border-bottom: 1px solid rgb(141, 141, 141);
+
+//         &:focus {
+//           outline: none;
+//         }
+//       }
+
+//     }
+//     button[type="submit"] {
+//       position: absolute;
+//       bottom: -7%;
+//       font-size: 0.7rem;
+//       padding: 2%;
+//       width: 40%;
+//       color: $second-color;
+//       background-color: $third-color;
+//       box-shadow: 0px 0px 5px $first-color;
+//     }
+//   }
+// }

@@ -7,7 +7,7 @@
 }
 
 html { 
-  font-size: calc(1em + 1vw); 
+  font-size: 16px; 
 }
 
 body {
@@ -66,6 +66,32 @@ a {
     background-color: $success-color;
     color: $first-color;
     box-shadow: 0px 0px 10px rgba($success-color, 0.8);
+  }
+}
+
+#main {
+  position: relative;
+}
+
+.side-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  @include media-breakpoint-up(md) {
+    width: $side-nav-width;
+
+  }
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: calc(16px + 6*((100vw - 320px) / 680));
+  }
+}
+@media screen and (min-width: 1000px) {
+  html {
+    font-size: 22px;
   }
 }
 
