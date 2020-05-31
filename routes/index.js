@@ -69,6 +69,7 @@ router
             res.redirect('/panel');
           } else {
             console.log('no data');
+            res.render('signin', {error:true});
           }
         }
       }

@@ -164,4 +164,21 @@ router.post('/createRental', (req, res, next) => {
     }
   );
 });
+
+router.post('/deleteRental', (req, res, next) => {
+  const rentalId = req.body.rental;
+
+  database.query(`DELETE FROM rents WHERE rent_id = ${rentalId}`, (err, result) => {
+    let deleted = false;
+    if (err) {
+      throw err;
+    } else {
+      deleted = true;
+    }
+    res.send({
+      rentalWasDeleted: deleted,
+      id: rentalId
+    });
+  });
+});
 module.exports = router;

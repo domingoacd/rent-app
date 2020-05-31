@@ -2,6 +2,7 @@ const btnCreateRental = document.querySelector('.j-createRental');
 const btnSaveRental = document.querySelector('.j-saveRental');
 const btnFilterRentals = document.querySelector('.j-filter');
 const btnShowFilteredRentals = document.querySelector('.j-searchRentals');
+const btnDeleteRental = document.querySelectorAll('.j-delete-car');
 const createRentalModal = document.querySelector('.j-modal-create');
 const filterRentalsModal = document.querySelector('.j-modal-filter');
 const carSelect = document.querySelector('select#car');
@@ -345,8 +346,40 @@ function sortRentals(e) {
   }
   
   insertSortedRentals(sortedCards);
-  console.log(sortedCards);
 }
+
+function removeRental (rentalId) {
+  const rental = document.querySelector(`.j-card[data-rentalnumber="${rentalId}"]`);
+  rental.remove();
+}
+
+function handleDeletedRental(response) {
+  const {rentalWasDeleted, id} = response;
+
+  if (rentalWasDeleted) {
+    removeRental(id);
+    showMessageOfType('Rental deleted!', 'success');
+  } else {
+    showMessageOfType(`Error, rental couldn't be deleted, 'error`);
+  }
+}
+
+function deleteRental(e) {
+  const rentalToDelete = {rental: this.parentNode.dataset.rentalnumber};
+  const url = '/async/deleteRental';
+  
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-type' : 'application/json'
+    },
+    body: JSON.stringify(rentalToDelete)
+  })
+  .then(data => data.json())
+  .catch(err => console.log(err))
+  .then(handleDeletedRental);
+}
+
 btnCreateRental.addEventListener('click', showCreateRentalModal);
 createRentalModal.addEventListener('click', closeCreateRentalModal);
 btnSaveRental.addEventListener('click', saveRental);
@@ -354,3 +387,4 @@ btnFilterRentals.addEventListener('click', showFilterModal);
 filterRentalsModal.addEventListener('click', closeFilterRentalsModal);
 btnShowFilteredRentals.addEventListener('click', filterRentals);
 sortRentalsSelect.addEventListener('change', sortRentals);
+btnDeleteRental.forEach(rental => rental.addEventListener('click', deleteRental));

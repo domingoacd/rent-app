@@ -1,12 +1,17 @@
 <div class="signin">
+  {{#if error}}
+    <div class="error message show"> 
+      Wrong email or password.  
+    </div>
+  {{/if}}
   <form action="" class="signin-form" method="POST">
     <div class="form-pair">
       <label for="email">Email</label>
-      <input type="email" name="email" />
+      <input type="email" name="email" required/>
     </div>
     <div class="form-pair">
       <label for="password">Password</label>
-      <input type="password" name="password" />
+      <input type="password" name="password" required/>
     </div>
     <button class="btn" type="submit">Sign in</button>
   </form>
