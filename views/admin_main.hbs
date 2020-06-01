@@ -1,6 +1,6 @@
 <div class="admin-main ">
-  <nav class="side-menu nav">
-    <ul>
+  <nav class="side-menu nav row">
+    <ul class="col-12 d-flex justify-content-center align-items-center">
       <li>
         <button class="btn btn--log-out j-log-out">Log out</button>
       </li>
@@ -10,30 +10,30 @@
     <div class="spinner"></div>
     <h3>Loading</h3>
   </div>
-  <div class="content">
+  <div class="content px-4">
     <div class="users_table" id="users_table">
-      <div class="thead">
-        <div class="bottons-container">
+      <div class="thead row">
+        <div class="bottons-container col-12 d-flex justify-content-end">
           <div class="btn admin-refresh j-refresh">Refresh</div>
           <button class="btn admin-save j-save">Save changes</button>
         </div>
-        <div class="tr">
-          <div class="th">Name</div>
-          <div class="th">Email</div>
-          <div class="th">Status</div>
-          <div class="th">Registration date</div>
+        <div class="tr col-12 d-flex justify-content-evenly">
+          <div class="th col-3">Name</div>
+          <div class="th col-3">Email</div>
+          <div class="th col-3">Status</div>
+          <div class="th col-3">Registration date</div>
         </div>
       </div>
-      <div class="tbody j-tbody">
+      <div class="tbody j-tbody row">
         {{#each pending_users}}
-          <div class="tr j-user" data-id="{{id}}">
-            <div class="td">
+          <div class="tr j-user col-12" data-id="{{id}}">
+            <div class="td col-3">
               {{full_name}}
             </div>
-            <div class="td">
+            <div class="td col-3">
               {{email}}
             </div>
-            <div class="td">
+            <div class="td col-3">
               <select name="registration_status" id="">
                 <option value="{{registration_status}}">
                   {{registration_status}}
@@ -42,7 +42,7 @@
                 <option value="denied">Denied</option>
               </select>
             </div>
-            <div class="td">
+            <div class="td col-3">
               {{registration_date}}
             </div>
           </div>

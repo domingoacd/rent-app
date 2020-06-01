@@ -78,6 +78,9 @@ a {
   html {
     font-size: 22px; } }
 
+.justify-content-evenly {
+  justify-content: space-evenly !important; }
+
 .btn {
   display: flex;
   justify-content: center;
@@ -240,6 +243,17 @@ a {
     .admin-main {
       width: calc(100% - 200px);
       margin-left: 200px; } }
+  .admin-main .tr, .admin-main .th {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; }
+  .admin-main .th {
+    text-align: center; }
+  .admin-main .tr {
+    border: 1px solid #131515; }
+  .admin-main .td {
+    overflow-wrap: break-word; }
 
 @keyframes spin {
   from {
