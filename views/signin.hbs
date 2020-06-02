@@ -1,16 +1,16 @@
-<div class="signin">
+<div class="signin row justify-content-center align-items-center">
   {{#if error}}
     <div class="error message show"> 
       Wrong email or password.  
     </div>
   {{/if}}
-  <form action="" class="signin-form" method="POST">
-    <div class="form-pair">
-      <label for="email">Email</label>
+  <form action="" class="form col-12 d-flex flex-column justify-content-center align-items-center" method="POST">
+    <div class="form-group d-flex flex-column">
+      <label for="email" class="mb-0">Email</label>
       <input type="email" name="email" required/>
     </div>
-    <div class="form-pair">
-      <label for="password">Password</label>
+    <div class="form-group d-flex flex-column">
+      <label for="password" class="mb-0">Password</label>
       <input type="password" name="password" required/>
     </div>
     <button class="btn" type="submit">Sign in</button>

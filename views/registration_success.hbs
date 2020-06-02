@@ -1,14 +1,9 @@
-<div class="reg_container">
-  <h1 class="reg_container__title">
+<div class="reg_container row justify-content-center align-items-center">
+  <h1 class="reg_container__title col-10 text-center">
     Hello {{name}}!
   </h1>
-  <div class="reg_container__message">
-    {{#if isAClient}}
-      Your account has been created successfully, <br> please click below to log in.
-      <a href="/signin" class="btn">Sign in</a>
-    {{else}}
-      Your request has been submitted. <br>
-      Please wait until an administrator approves it.
-    {{/if}}
+  <div class="reg_container__message col-10 d-flex justify-content-center align-items-center text-center">
+    Your request has been submitted. <br>
+    Please wait until an administrator approves it.
   </div>
 </div>

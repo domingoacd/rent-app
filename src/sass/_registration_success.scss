@@ -1,0 +1,25 @@
+.reg_container {
+  height: calc(100vh - #{$footer-height});
+  min-height: 20rem;
+  &__title {
+
+  }
+
+  &__message {
+    position: relative;
+    bottom: 10%;
+    max-width: 550px;
+    height: 50%;
+    min-height: 200px;
+    max-height: 500px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+
+    .btn {
+      width: 6rem;
+      height: 2rem;
+      margin-top: 5%;
+      color: #fff;
+    }
+  }
+}
