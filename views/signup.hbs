@@ -1,36 +1,16 @@
-<div class="signup">
-  <form action="" class="signup-form" method="POST">
-    <div class="form-pair">
-      <label for="name">Name</label>
+<div class="signup row justify-content-center align-items-center">
+  <form action="" class="form signup-form col-10 mx-auto d-flex flex-column align-items-center" method="POST">
+    <div class="form-group d-flex flex-column">
+      <label for="name" class="mb-0">Name</label>
       <input type="text" name="name" required>
     </div>
-    <div class="form-pair">
-      <label for="account_type">I want to be:</label>
-      <select name="account_type" required>
-        <option value=""></option>
-        <option value="user">An user</option>
-        <option value="client">A client</option>
-      </select>
+    <div class="form-group d-flex flex-column">
+      <label for="email" class="mb-0">Email</label>
+      <input type="email" name="email">
     </div>
-    <div class="fields-container" data-fields="user">
-      <div class="form-pair">
-        <label for="email">Email</label>
-        <input type="email" name="email">
-      </div>
-      <div class="form-pair">
-        <label for="password">Password</label>
-        <input type="password" name="password">
-      </div>
-    </div>
-    <div class="fields-container" data-fields="client">
-      <div class="form-pair">
-        <label for="license">License Number</label>
-        <input type="text" name="license">
-      </div>
-      <div class="form-pair">
-        <label for="phone">Phone Number</label>
-        <input type="text" name="phone">
-      </div>
+    <div class="form-group d-flex flex-column">
+      <label for="password" class="mb-0">Password</label>
+      <input type="password" name="password">
     </div>
     <button class="btn" type="submit">Submit</button>
   </form>
