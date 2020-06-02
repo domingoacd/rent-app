@@ -10,30 +10,26 @@
     <div class="spinner"></div>
     <h3>Loading</h3>
   </div>
-  <div class="content px-4">
-    <div class="users_table" id="users_table">
-      <div class="thead row">
-        <div class="bottons-container col-12 d-flex justify-content-end">
-          <div class="btn admin-refresh j-refresh">Refresh</div>
-          <button class="btn admin-save j-save">Save changes</button>
-        </div>
-        <div class="tr col-12 d-flex justify-content-evenly">
-          <div class="th col-3">Name</div>
-          <div class="th col-3">Email</div>
-          <div class="th col-3">Status</div>
-          <div class="th col-3">Registration date</div>
-        </div>
-      </div>
-      <div class="tbody j-tbody row">
+  <div class="content pr-2">
+    <div class="row justify-content-end">
+      <div class="btn admin-refresh j-refresh">Refresh</div>
+      <button class="btn admin-save j-save">Save changes</button>
+    </div>
+    <table class="table users_table" id="users_table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Status</th>
+          <th scope="col">Registration date</th>
+        </tr>
+      </thead>
+      <tbody class="j-tbody">
         {{#each pending_users}}
-          <div class="tr j-user col-12" data-id="{{id}}">
-            <div class="td col-3">
-              {{full_name}}
-            </div>
-            <div class="td col-3">
-              {{email}}
-            </div>
-            <div class="td col-3">
+          <tr class="j-user" data-id="{{id}}">
+            <td>{{full_name}}</td>
+            <td class="email">{{email}}</td>
+            <td>
               <select name="registration_status" id="">
                 <option value="{{registration_status}}">
                   {{registration_status}}
@@ -41,16 +37,14 @@
                 <option value="approved">Approved</option>
                 <option value="denied">Denied</option>
               </select>
-            </div>
-            <div class="td col-3">
-              {{registration_date}}
-            </div>
-          </div>
-        {{else}}
+            </td>
+            <td>{{registration_date}}</td>
+          </tr>
+          {{else}}
           <h2 class="empty_users_message">There are not users waiting.</h2>
-        {{/each}}
-      </div>
-    </div>
+          {{/each}}
+      </tbody>
+    </table>
   </div>
 </div>
 

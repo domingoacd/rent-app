@@ -7,21 +7,32 @@
 
   }
 
-  .tr, .th {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
+  .content {
+    width: calc(95vw - #{$side-nav-width});
   }
-  .th {
-    text-align: center;
+  table {
+    th {
+      text-align: center;
+    }
+    th, td {
+      padding: 2%;
+    }
   }
-  .tr {
-    border: 1px solid $second-color;
-  }
-  .td {
-    overflow-wrap: break-word;
-  }
+  // .tr, .th {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   padding: 0;
+  // }
+  // .th {
+  //   text-align: center;
+  // }
+  // .tr {
+  //   border: 1px solid $second-color;
+  // }
+  // .td {
+  //   overflow-wrap: break-word;
+  // }
 }
 // .admin-main {
 //   position: relative;

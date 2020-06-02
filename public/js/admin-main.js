@@ -23,15 +23,14 @@ function handleReceivedUsers(users) {
 
   if (pendingUsers) {
     pendingUsers.forEach(user => {
-      const user_row = document.createElement('div');
+      const user_row = document.createElement('tr');
       const userProperties = [user.full_name, user.email, user.registration_status, user.registration_date];
       
-      user_row.classList.add('tr', 'j-user')
+      user_row.classList.add('j-user')
       user_row.setAttribute('data-id', user.id);
   
       userProperties.forEach((property, index) => {
         const property_field = document.createElement('td');
-        property_field.classList.add('td');
         let property_HTML = "";
         if (index === 2) {  
           property_HTML = 
