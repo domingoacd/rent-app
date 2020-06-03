@@ -62,7 +62,7 @@
 <div class="panel">
 {{#if approved_user}}
   <nav class="side-menu d-flex flex-column justify-content-center align-items-center" id="side-nav">
-    <button class="toggle-nav" id="toggle-nav"> &lt; </button>
+    <button class="toggle-nav" id="toggle-nav"> &gt; </button>
     <ul>
       <li>
         <a href="/panel/cars">Cars</a>
@@ -77,9 +77,9 @@
   </nav>
   <div class="content">
     <div class="panel-dashboard j-panelDashboard d-flex flex-column">
-      <div class="panel-dashboard__upper row justify-content-end align-items-center">
-        <div class="btn btn--filter j-filter col-4">Filter</div>
-        <div class="pair col-6">
+      <div class="panel-dashboard__upper row justify-content-end align-items-center mt-2">
+        <div class="btn btn--filter j-filter col-12 mx-auto col-sm-4">Filter</div>
+        <div class="pair col-12 col-sm-6 d-flex mt-2 mt-sm-0 justify-content-center align-items-center">
           <label for="sort">Sort by:</label>
           <select name="sort" id="sort">
             <option value="creation_date">Creation date</option>

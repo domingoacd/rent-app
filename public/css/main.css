@@ -3,13 +3,13 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
-  color: #131515; }
+  color: #222831; }
 
 html {
   font-size: 16px; }
 
 body {
-  background-color: #FFFAFB;
+  background-color: #eeeeee;
   overflow-x: hidden; }
 
 li {
@@ -27,7 +27,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 200;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.5s, opacity 0.5s; }
@@ -50,11 +50,11 @@ a {
   align-items: center; }
   .message.error {
     background-color: red;
-    color: #FFFAFB;
+    color: #eeeeee;
     box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.8); }
   .message.success {
     background-color: green;
-    color: #FFFAFB;
+    color: #eeeeee;
     box-shadow: 0px 0px 10px rgba(0, 128, 0, 0.8); }
 
 #main {
@@ -66,30 +66,44 @@ a {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 30px;
   transition: width 0.7s;
-  overflow: hidden; }
+  overflow: hidden;
+  background-color: #393e46; }
   @media (min-width: 768px) {
     .side-menu {
       width: 200px; } }
   .side-menu.show {
     width: 200px; }
+    .side-menu.show .toggle-nav {
+      transform: rotate(180deg); }
     .side-menu.show ul {
       opacity: 1; }
   .side-menu .toggle-nav {
     position: absolute;
     top: 5%;
-    right: 5%;
-    font-size: 3rem; }
+    font-size: 2rem;
+    background-color: transparent;
+    border: none;
+    color: #eeeeee;
+    transition: transform 0.7s; }
     @media (min-width: 768px) {
       .side-menu .toggle-nav {
         display: none; } }
+    .side-menu .toggle-nav:focus {
+      outline: none; }
   .side-menu ul {
     opacity: 0;
     transition: opacity 0.5s; }
     @media (min-width: 768px) {
       .side-menu ul {
         opacity: 1; } }
+    .side-menu ul a {
+      color: #eeeeee; }
 
 @media screen and (min-width: 320px) {
   html {
@@ -108,35 +122,39 @@ a {
   align-items: center;
   border-radius: 10px;
   font-size: 1rem;
-  padding: 2%;
-  background-color: #131515;
+  background-color: #222831;
   cursor: pointer;
   border: none;
   text-decoration: none;
-  transition: transform 0.3s; }
+  transition: transform 0.3s;
+  color: #eeeeee;
+  max-width: 7rem;
+  padding: 2% 4%; }
   .btn:hover {
-    transform: scale(1.1); }
+    transform: scale(1.1);
+    color: #eeeeee; }
   .btn:focus {
     outline: none; }
   .btn--sign-up {
-    color: #131515;
     background-color: #339989; }
   .btn--sign-in {
-    color: #131515;
+    color: #222831;
     background-color: #339989; }
   .btn--log-in {
-    color: #FFFAFB; }
+    color: #eeeeee; }
 
 .footer {
   display: flex;
   align-items: center;
   padding: 0 2%;
   width: 100vw;
+  padding-right: 40px;
   height: 80px;
-  background-color: #131515; }
+  background-color: #222831; }
   .footer .copyright-text {
-    color: #FFFAFB;
-    font-weight: 100; }
+    color: #eeeeee;
+    font-weight: 100;
+    font-size: 0.7rem; }
 
 .signup {
   height: calc(100vh - 80px);
@@ -185,7 +203,6 @@ a {
       background-color: #FFFAFB;
       border-radius: 20px;
       width: 20rem;
-      height: 20rem;
       display: flex;
       justify-content: center;
       align-items: center; }
@@ -195,7 +212,7 @@ a {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 5%; }
+        padding: 2%; }
         .modal--createRent .modal-content .form-createRent .form-pair {
           position: relative;
           display: flex;
@@ -204,9 +221,9 @@ a {
           .modal--createRent .modal-content .form-createRent .form-pair label {
             font-size: 0.8rem;
             margin-bottom: 5px;
-            color: #131515; }
+            color: #222831; }
             .modal--createRent .modal-content .form-createRent .form-pair label.image-label {
-              background-color: #7DE2D1;
+              background-color: #393e46;
               width: 3rem;
               height: 3rem;
               border-radius: 50%;
@@ -222,8 +239,8 @@ a {
                 background-color: unset;
                 align-items: flex-end; }
                 .modal--createRent .modal-content .form-createRent .form-pair label.image-label.uploaded span {
-                  background-color: #131515;
-                  color: #FFFAFB;
+                  background-color: #222831;
+                  color: #eeeeee;
                   width: 100%;
                   padding: 5px 0;
                   border-radius: 10px; }
@@ -236,12 +253,12 @@ a {
             border-bottom: 1px solid #8d8d8d; }
             .modal--createRent .modal-content .form-createRent .form-pair input:focus {
               outline: none;
-              border-bottom: 1px solid #7DE2D1; }
+              border-bottom: 1px solid #393e46; }
             .modal--createRent .modal-content .form-createRent .form-pair input[type="file"] {
               display: none; }
             .modal--createRent .modal-content .form-createRent .form-pair input[readonly] {
-              background-color: #131515;
-              color: #FFFAFB;
+              background-color: #222831;
+              color: #eeeeee;
               cursor: not-allowed; }
           .modal--createRent .modal-content .form-createRent .form-pair select {
             width: 10rem;
@@ -254,14 +271,14 @@ a {
             .modal--createRent .modal-content .form-createRent .form-pair select:focus {
               outline: none; }
             .modal--createRent .modal-content .form-createRent .form-pair select[readonly] {
-              background-color: #131515;
-              color: #FFFAFB;
+              background-color: #222831;
+              color: #eeeeee;
               cursor: not-allowed; }
         .modal--createRent .modal-content .form-createRent button[type="submit"] {
           font-size: 0.7rem;
           padding: 2%;
           width: 40%;
-          color: #FFFAFB; }
+          color: #eeeeee; }
   .modal--filterRents {
     background-color: rgba(0, 0, 0, 0.5); }
     .modal--filterRents .modal-content {
@@ -287,9 +304,9 @@ a {
           .modal--filterRents .modal-content .form-filterRents .form-pair label {
             font-size: 0.8rem;
             margin-bottom: 5px;
-            color: #131515; }
+            color: #222831; }
             .modal--filterRents .modal-content .form-filterRents .form-pair label.image-label {
-              background-color: #7DE2D1;
+              background-color: #393e46;
               width: 3rem;
               height: 3rem;
               border-radius: 50%;
@@ -305,8 +322,8 @@ a {
                 background-color: unset;
                 align-items: flex-end; }
                 .modal--filterRents .modal-content .form-filterRents .form-pair label.image-label.uploaded span {
-                  background-color: #131515;
-                  color: #FFFAFB;
+                  background-color: #222831;
+                  color: #eeeeee;
                   width: 100%;
                   padding: 5px 0;
                   border-radius: 10px; }
@@ -319,12 +336,12 @@ a {
             border-bottom: 1px solid #8d8d8d; }
             .modal--filterRents .modal-content .form-filterRents .form-pair input:focus {
               outline: none;
-              border-bottom: 1px solid #7DE2D1; }
+              border-bottom: 1px solid #393e46; }
             .modal--filterRents .modal-content .form-filterRents .form-pair input[type="file"] {
               display: none; }
             .modal--filterRents .modal-content .form-filterRents .form-pair input[readonly] {
-              background-color: #131515;
-              color: #FFFAFB;
+              background-color: #222831;
+              color: #eeeeee;
               cursor: not-allowed; }
           .modal--filterRents .modal-content .form-filterRents .form-pair select {
             width: 10rem;
@@ -337,14 +354,14 @@ a {
             .modal--filterRents .modal-content .form-filterRents .form-pair select:focus {
               outline: none; }
             .modal--filterRents .modal-content .form-filterRents .form-pair select[readonly] {
-              background-color: #131515;
-              color: #FFFAFB;
+              background-color: #222831;
+              color: #eeeeee;
               cursor: not-allowed; }
         .modal--filterRents .modal-content .form-filterRents button[type="submit"] {
           font-size: 0.7rem;
           padding: 2%;
           width: 40%;
-          color: #FFFAFB; }
+          color: #eeeeee; }
 
 .panel {
   position: relative;
@@ -353,7 +370,7 @@ a {
   align-items: center;
   width: 100vw;
   min-height: calc(100vh - 80px);
-  background-color: #FFFAFB; }
+  background-color: #eeeeee; }
   .panel__message {
     width: 80%;
     min-width: 300px;
@@ -377,6 +394,22 @@ a {
     @media (min-width: 768px) {
       .panel .content {
         padding-left: 200px; } }
+    .panel .content .panel-dashboard__upper label {
+      margin: 0;
+      margin-right: 2%; }
+    .panel .content .panel-dashboard__upper select {
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid #222831;
+      font-size: 0.7rem; }
+      .panel .content .panel-dashboard__upper select:active, .panel .content .panel-dashboard__upper select:focus {
+        outline: none; }
+
+.footer {
+  background-color: #eeeeee;
+  justify-content: flex-end; }
+  .footer .copyright-text {
+    color: #222831; }
 
 .message {
   position: fixed;
@@ -419,9 +452,9 @@ a {
           .modal--addCar .modal-content .form-addCar .form-pair label {
             font-size: 0.8rem;
             margin-bottom: 5px;
-            color: #131515; }
+            color: #222831; }
             .modal--addCar .modal-content .form-addCar .form-pair label.image-label {
-              background-color: #7DE2D1;
+              background-color: #393e46;
               width: 3rem;
               height: 3rem;
               border-radius: 50%;
@@ -437,8 +470,8 @@ a {
                 background-color: unset;
                 align-items: flex-end; }
                 .modal--addCar .modal-content .form-addCar .form-pair label.image-label.uploaded span {
-                  background-color: #131515;
-                  color: #FFFAFB;
+                  background-color: #222831;
+                  color: #eeeeee;
                   width: 100%;
                   padding: 5px 0;
                   border-radius: 10px; }
@@ -451,7 +484,7 @@ a {
             border-bottom: 1px solid #8d8d8d; }
             .modal--addCar .modal-content .form-addCar .form-pair input:focus {
               outline: none;
-              border-bottom: 1px solid #7DE2D1; }
+              border-bottom: 1px solid #393e46; }
             .modal--addCar .modal-content .form-addCar .form-pair input[type="file"] {
               display: none; }
           .modal--addCar .modal-content .form-addCar .form-pair select {
@@ -468,7 +501,7 @@ a {
           font-size: 0.7rem;
           padding: 2%;
           width: 40%;
-          color: #FFFAFB; }
+          color: #eeeeee; }
   .modal--deleteCar {
     background-color: rgba(0, 0, 0, 0.5); }
     .modal--deleteCar .modal-content {
@@ -499,11 +532,11 @@ a {
         justify-content: center;
         align-items: center; }
         .modal--deleteCar .modal-content .buttons-container .btn--delete {
-          color: #FFFAFB; }
+          color: #eeeeee; }
         .modal--deleteCar .modal-content .buttons-container .cancel-delete {
           margin-left: 5%;
           font-size: 0.7rem;
-          border-bottom: 1px solid #131515;
+          border-bottom: 1px solid #222831;
           cursor: pointer; }
 
 .cars {
@@ -512,7 +545,7 @@ a {
   align-items: center;
   width: 100vw;
   min-height: calc(100vh - 80px);
-  background-color: #FFFAFB; }
+  background-color: #eeeeee; }
   .cars__message {
     width: 80%;
     min-width: 300px;
@@ -529,43 +562,21 @@ a {
     margin-top: 2%;
     text-align: center;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5); }
-  .cars .side-menu {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #131515; }
-    .cars .side-menu ul {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center; }
-      .cars .side-menu ul li {
-        width: 100%;
-        margin-bottom: 5%;
-        text-align: center; }
-        .cars .side-menu ul li a {
-          color: #FFFAFB; }
-    .cars .side-menu .btn-addCar {
-      background-color: #7DE2D1;
-      padding: 2% 3%;
-      margin: 0 auto; }
   .cars .content {
     width: 100%;
     height: 100%;
-    padding-left: 200px; }
+    padding-left: 0; }
+    @media (min-width: 768px) {
+      .cars .content {
+        padding-left: 200px; } }
     .cars .content .cars_dashboard {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(100px, 8rem));
       justify-content: space-evenly;
       align-items: center;
       gap: 15px;
-      padding: 5%; }
+      padding: 5%;
+      padding-left: 0; }
       .cars .content .cars_dashboard .card {
         position: relative;
         height: 350px;
@@ -642,9 +653,9 @@ a {
           .modal--addClient .modal-content .form-addClient .form-pair label {
             font-size: 0.8rem;
             margin-bottom: 5px;
-            color: #131515; }
+            color: #222831; }
             .modal--addClient .modal-content .form-addClient .form-pair label.image-label {
-              background-color: #7DE2D1;
+              background-color: #393e46;
               width: 3rem;
               height: 3rem;
               border-radius: 50%;
@@ -660,8 +671,8 @@ a {
                 background-color: unset;
                 align-items: flex-end; }
                 .modal--addClient .modal-content .form-addClient .form-pair label.image-label.uploaded span {
-                  background-color: #131515;
-                  color: #FFFAFB;
+                  background-color: #222831;
+                  color: #eeeeee;
                   width: 100%;
                   padding: 5px 0;
                   border-radius: 10px; }
@@ -674,7 +685,7 @@ a {
             border-bottom: 1px solid #8d8d8d; }
             .modal--addClient .modal-content .form-addClient .form-pair input:focus {
               outline: none;
-              border-bottom: 1px solid #7DE2D1; }
+              border-bottom: 1px solid #393e46; }
             .modal--addClient .modal-content .form-addClient .form-pair input[type="file"] {
               display: none; }
           .modal--addClient .modal-content .form-addClient .form-pair select {
@@ -691,7 +702,7 @@ a {
           font-size: 0.7rem;
           padding: 2%;
           width: 40%;
-          color: #FFFAFB; }
+          color: #eeeeee; }
   .modal--deleteClient {
     background-color: rgba(0, 0, 0, 0.5); }
     .modal--deleteClient .modal-content {
@@ -722,11 +733,11 @@ a {
         justify-content: center;
         align-items: center; }
         .modal--deleteClient .modal-content .buttons-container .btn--delete {
-          color: #FFFAFB; }
+          color: #eeeeee; }
         .modal--deleteClient .modal-content .buttons-container .cancel-delete {
           margin-left: 5%;
           font-size: 0.7rem;
-          border-bottom: 1px solid #131515;
+          border-bottom: 1px solid #222831;
           cursor: pointer; }
 
 .clients {
@@ -736,43 +747,15 @@ a {
   align-items: center;
   width: 100vw;
   min-height: calc(100vh - 80px);
-  background-color: #FFFAFB; }
-  .clients .side-menu {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #131515; }
-    .clients .side-menu ul {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center; }
-      .clients .side-menu ul li {
-        width: 100%;
-        margin-bottom: 2%; }
-        .clients .side-menu ul li a {
-          width: 100%;
-          display: inline-block;
-          text-align: center;
-          color: #FFFAFB; }
-        .clients .side-menu ul li .btn--addClient {
-          width: 80%;
-          margin: 0 auto;
-          margin-top: 2%;
-          color: #131515;
-          background-color: #7DE2D1; }
-          .clients .side-menu ul li .btn--addClient:hover {
-            transform: scale(1.1); }
+  background-color: #eeeeee; }
   .clients .content {
     position: relative;
-    width: calc(100vw - 200px);
-    padding: 2%; }
+    width: 100%;
+    padding: 2%;
+    padding-left: 0; }
+    @media (min-width: 768px) {
+      .clients .content {
+        padding-left: 200px; } }
     .clients .content .clients-table {
       position: relative;
       display: flex;
@@ -791,9 +774,9 @@ a {
           justify-content: flex-end;
           align-items: flex-end; }
           .clients .content .clients-table .thead .bottons-container .admin-refresh {
-            color: #131515;
-            background-color: #FFFAFB;
-            border: 1px solid #131515;
+            color: #222831;
+            background-color: #eeeeee;
+            border: 1px solid #222831;
             padding: 0 1%;
             height: 1.5rem;
             width: 2.5rem;
@@ -803,7 +786,7 @@ a {
             .clients .content .clients-table .thead .bottons-container .admin-refresh:hover {
               transform: unset; }
           .clients .content .clients-table .thead .bottons-container .admin-save {
-            color: #FFFAFB;
+            color: #eeeeee;
             font-size: 0.6rem;
             padding: 0 1%;
             height: 2rem;
@@ -818,7 +801,7 @@ a {
         width: 25%;
         font-size: 0.8rem;
         text-align: center;
-        border-right: 1px solid rgba(43, 44, 40, 0.5); }
+        border-right: 1px solid rgba(0, 173, 181, 0.5); }
       .clients .content .clients-table .tr {
         display: flex;
         width: 100%;
@@ -835,12 +818,12 @@ a {
         font-size: 0.7rem;
         box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3); }
         .clients .content .clients-table .td .btn.deleteClient {
-          color: #FFFAFB;
+          color: #eeeeee;
           font-size: 0.8rem;
           padding: 5% 10px; }
       .clients .content .clients-table .no_clients_message {
         text-align: center;
-        color: rgba(43, 44, 40, 0.5); }
+        color: rgba(0, 173, 181, 0.5); }
 
 .reg_container {
   height: calc(100vh - 80px);

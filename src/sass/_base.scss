@@ -33,7 +33,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 200;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.5s, opacity 0.5s;
@@ -75,19 +75,27 @@ a {
 
 .side-menu {
   position: fixed;
-  z-index: 100;;
+  z-index: 100;
   left: 0;
   top: 0;
   bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   width: $folded-side-nav-width;
   transition: width 0.7s;
   overflow: hidden;
+  background-color: $third-color;
   @include media-breakpoint-up(md) {
     width: $side-nav-width;
   }
 
   &.show {
     width: $side-nav-width;
+    .toggle-nav {
+      transform: rotate(180deg);
+    }
     ul {
       opacity: 1;
     }
@@ -95,11 +103,18 @@ a {
   .toggle-nav {
     position: absolute;
     top: 5%;
-    right: 5%;
-    font-size: 3rem;
-     @include media-breakpoint-up(md) {
-       display: none;
-     }
+    // right: 5%;
+    font-size: 2rem;
+    background-color: transparent;
+    border: none;
+    color: $first-color;
+    transition: transform 0.7s;
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+    &:focus {
+      outline: none;
+    }
   }
 
   ul {
@@ -108,7 +123,12 @@ a {
       @include media-breakpoint-up(md) { 
         opacity: 1;
       }
+
+      a {
+        color: $first-color;
+      }
   }
+  
   
 }
 @media screen and (min-width: 320px) {

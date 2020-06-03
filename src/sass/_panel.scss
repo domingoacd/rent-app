@@ -9,7 +9,6 @@
       background-color: #FFFAFB;
       border-radius: 20px;
       width: 20rem;
-      height: 20rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,7 +19,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 5%;
+        padding: 2%;
 
         .form-pair {
           position: relative;
@@ -260,109 +259,33 @@
     @include media-breakpoint-up(md) {
       padding-left: $side-nav-width;
     }
+
+    .panel-dashboard {
+      &__upper {
+        label {
+          margin: 0;
+          margin-right: 2%;
+        }
+
+        select {
+          background-color: transparent;
+          border: 0;
+          border-bottom: 1px solid $second-color;
+          font-size: 0.7rem;
+          &:active, &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
     
-    // .panel-dashboard {
-    //   display: flex;
-    //   flex-direction: column;
-    //   &__upper {
-    //     width: 100%;
-    //     padding: 1% 2%;
-    //     display: flex;
-    //     justify-content: flex-end;
-    //     align-items: center;
-        
-    //     .btn {
-    //       &--filter {
-    //         color: $first-color;
-    //         height: 1.4rem;
-    //         width: 3rem;
-    //         font-size: 0.7rem;
-    //       }
-    //     }
+  }
 
-    //     .pair {
-    //       margin: 0 10px;
-    //       font-size: 0.7rem;
-
-    //       select {
-    //         background-color: transparent;
-    //         border: none;
-    //         border-bottom: 1px solid rgb(141, 141, 141);
-
-    //         &:focus {
-    //           outline: none;
-    //         }
-    //       }
-    //     }
-
-    //   }
-
-    //   &__bottom {
-    //     width: 100%;
-    //     display: grid;
-    //     grid-template-columns: repeat(auto-fit, minmax(100px, 8rem));
-    //     justify-content: space-evenly;
-    //     align-items: center;
-    //     gap: 15px;
-    //     padding: 5%;
-
-    //     .card {
-    //       position: relative;
-    //       height: 350px;
-    //       display: flex;
-    //       flex-direction: column;
-    //       justify-content: space-evenly;
-    //       align-items: center;
-    //       border-radius: 20px;
-    //       padding: 1% 4%;
-          
-    //       text-align: center;
-    //       box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
-    //       border: 1px solid #13151566;
-          
-    //       &.hide {
-    //         display: none;
-    //       }
-
-    //       img {
-    //         width: auto;
-    //         height: 25%;
-    //       }
-    //       .car_model {
-    //         width: 108%;
-    //         border: 1px solid #000; 
-    //         border-right: none;
-    //         border-left: none;
-    //         color: #fffafb;
-    //         background-color: #131515;
-    //       }
-  
-    //       .car_year, .car_kilometers, .client_name, .license_number, .rental_date, .return_date {
-    //         display: flex;
-    //         align-items: center;
-    //         font-size: 0.7rem;
-    //         span {
-    //           font-weight: 100;
-    //           font-size: 0.6rem;
-    //           margin-left: 5%;
-    //         }
-    //       }
-    //       .rental_date, .return_date {
-    //         flex-direction: column;
-    //         width: 80%;
-    //         text-align: center;
-    //       }
-  
-    //       .delete-car {
-    //         font-size: 0.5rem;
-    //         text-decoration: underline;
-    //         cursor: pointer;
-    //         &.rented {
-    //           visibility: hidden;
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
+}
+.footer {
+  background-color: $first-color;
+  justify-content: flex-end;
+  .copyright-text {
+    color: $second-color;
   }
 }
