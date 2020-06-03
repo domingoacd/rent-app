@@ -75,14 +75,41 @@ a {
 
 .side-menu {
   position: fixed;
+  z-index: 100;;
   left: 0;
   top: 0;
   bottom: 0;
-  width: 20px;
+  width: $folded-side-nav-width;
+  transition: width 0.7s;
+  overflow: hidden;
   @include media-breakpoint-up(md) {
     width: $side-nav-width;
-
   }
+
+  &.show {
+    width: $side-nav-width;
+    ul {
+      opacity: 1;
+    }
+  }
+  .toggle-nav {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-size: 3rem;
+     @include media-breakpoint-up(md) {
+       display: none;
+     }
+  }
+
+  ul {
+    opacity: 0;
+    transition: opacity 0.5s;
+      @include media-breakpoint-up(md) { 
+        opacity: 1;
+      }
+  }
+  
 }
 @media screen and (min-width: 320px) {
   html {

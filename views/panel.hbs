@@ -61,7 +61,8 @@
 </div>
 <div class="panel">
 {{#if approved_user}}
-  <div class="side-menu">
+  <nav class="side-menu d-flex flex-column justify-content-center align-items-center" id="side-nav">
+    <button class="toggle-nav" id="toggle-nav"> &lt; </button>
     <ul>
       <li>
         <a href="/panel/cars">Cars</a>
@@ -73,12 +74,12 @@
         <button class="btn btn-createRental j-createRental">Create Rental</button>
       </li>
     </ul>
-  </div>
+  </nav>
   <div class="content">
-    <div class="panel-dashboard j-panelDashboard">
-      <div class="panel-dashboard__upper">
-        <div class="btn btn--filter j-filter">Filter</div>
-        <div class="pair">
+    <div class="panel-dashboard j-panelDashboard d-flex flex-column">
+      <div class="panel-dashboard__upper row justify-content-end align-items-center">
+        <div class="btn btn--filter j-filter col-4">Filter</div>
+        <div class="pair col-6">
           <label for="sort">Sort by:</label>
           <select name="sort" id="sort">
             <option value="creation_date">Creation date</option>
@@ -86,9 +87,9 @@
           </select>
         </div>
       </div>
-      <div class="panel-dashboard__bottom j-cardsContainer">
+      <div class="panel-dashboard__bottom j-cardsContainer row justify-content-evenly my-3">
         {{#each rentals}}
-          <div class="card j-card" data-rentalnumber="{{rent_id}}">
+          <div class="card j-card col-10 col-sm-3" data-rentalnumber="{{rent_id}}">
             {{#if image_name}}
             <img src="/{{image_name}}" alt="">
             {{else}}
@@ -109,13 +110,13 @@
             <p class="license_number">
               License: <span class="j-licenseNumber">{{license_number}}</span>
             </p>
-            <p class="rental_date">
+            <p class="rental_date d-flex flex-column align-items-center">
               Rental date: <span class="j-rentalDate">{{rental_date}}</span>
             </p>
-            <p class="return_date">
+            <p class="return_date d-flex flex-column align-items-center">
               Return: <span class="j-returnDate">{{return_date}}</span>
             </p>
-            <div class="delete-car j-delete-car {{status}}">
+            <div class="delete-car j-delete-car delete {{status}}">
               Return rental
             </div>
           </div>
