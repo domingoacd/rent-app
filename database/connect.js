@@ -3,7 +3,8 @@ const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '12345',
-  database: 'rent_app'
+  database: 'rent_app',
+  multipleStatements: true
 });
 
 connection.connect((err) => {

@@ -150,7 +150,10 @@ router.get('/getClients', (req, res, next) => {
 router.post('/createRental', (req, res, next) => {
   let rentalCreated = false;
   database.query(
-    `INSERT INTO rents (car_id, client_id, user_rental_id, rental_date, return_date) values (${req.body.car}, ${req.body.client}, ${req.body.createdBy}, NOW(), '${req.body.returnDate}')`,
+    `START TRANSACTION;
+     INSERT INTO rents (car_id, client_id, user_rental_id, rental_date, return_date) VALUES (${req.body.car}, ${req.body.client}, ${req.body.createdBy}, NOW(), '${req.body.returnDate}');
+     UPDATE cars SET status = "rented" WHERE id = ${req.body.car};
+    COMMIT;`,
     (err, result) => {
       if (err) {
         throw err;
@@ -168,17 +171,25 @@ router.post('/createRental', (req, res, next) => {
 router.post('/deleteRental', (req, res, next) => {
   const rentalId = req.body.rental;
 
-  database.query(`DELETE FROM rents WHERE rent_id = ${rentalId}`, (err, result) => {
-    let deleted = false;
-    if (err) {
-      throw err;
-    } else {
-      deleted = true;
+  database.query(
+    `START TRANSACTION;
+     SELECT car_id FROM rents WHERE rent_id = ${rentalId} INTO @car; 
+     DELETE FROM rents WHERE rent_id = ${rentalId};
+     UPDATE cars SET status = "available" WHERE id = @car;
+     COMMIT;
+     `,
+    (err, result) => {
+      let deleted = false;
+      if (err) {
+        throw err;
+      } else {
+        deleted = true;
+      }
+      res.send({
+        rentalWasDeleted: deleted,
+        id: rentalId
+      });
     }
-    res.send({
-      rentalWasDeleted: deleted,
-      id: rentalId
-    });
-  });
+  );
 });
 module.exports = router;
